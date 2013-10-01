@@ -6,7 +6,16 @@ public class Comentario {
 		private IComentable comentable;
 		private Usuario usuario;
 		private boolean aceptado = true;
+		private int numeroComentario;
 		
+		public int getNumeroComentario() {
+			return numeroComentario;
+		}
+
+		public void setNumeroComentario(int id) {
+			this.numeroComentario = id;
+		}
+
 		public Comentario(String texto, IComentable comentable,
 				Usuario usuario, boolean aceptado) {
 			
