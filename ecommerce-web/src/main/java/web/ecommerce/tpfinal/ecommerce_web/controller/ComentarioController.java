@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import web.ecommerce.tpfinal.ecommerce_web.repository.ProductoRepository;
+
 public class ComentarioController {
 	@Controller
 	@RequestMapping(value="/commerce/**")
