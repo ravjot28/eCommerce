@@ -8,10 +8,10 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#">Demo project</a>
+        <a class="navbar-brand" href="#">eCommerce</a>
         <div class="nav-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
+                <li class="active"><a href="/ecommerce-web/commerce/index">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="ecommerce-web/index/buscar">Busqueda Productos</a></li>
             </ul>
