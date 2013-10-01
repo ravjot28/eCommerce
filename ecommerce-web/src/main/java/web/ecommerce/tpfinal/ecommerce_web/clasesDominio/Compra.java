@@ -1,4 +1,4 @@
-package web.ecommerce.tpfinal.clasesDominio;
+package web.ecommerce.tpfinal.ecommerce_web.clasesDominio;
 
 import java.util.List;
 
