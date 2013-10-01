@@ -14,17 +14,17 @@ public class CommerceController {
 	
 	@Autowired
 	private ProductoRepository ProductoRepository;
+
 	
 	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public ModelAndView index(){
-		ModelAndView mav = new ModelAndView();		
+		ModelAndView mav = new ModelAndView();	
 		return mav;
 	}
+	
 	@RequestMapping(value="/busqueda", method=RequestMethod.GET)
 	public ModelAndView busquedaP(){
 		ModelAndView mav = new ModelAndView();
-		
-		
 		return mav;
 	}
 	
