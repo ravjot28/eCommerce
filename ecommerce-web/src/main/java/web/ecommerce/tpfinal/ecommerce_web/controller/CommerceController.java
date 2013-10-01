@@ -28,6 +28,14 @@ public class CommerceController {
 		return mav;
 	}
 	
+
+	@RequestMapping(value = "/verDetalle", method = RequestMethod.GET)
+	public ModelAndView agregarComida() {
+		ModelAndView mav = new ModelAndView();
+		return mav;
+	}
+
+
 	
 	
 }
