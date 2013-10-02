@@ -19,7 +19,7 @@ public class BusquedaController {
 	private ProductoRepository ProductoRepository;
 	
 	@RequestMapping(value="/busqueda", method=RequestMethod.POST)
-	public ModelAndView busqueda(@RequestParam String nombre, int minimo, int maximo){
+	public ModelAndView busqueda(@RequestParam String nombre, @RequestParam int minimo, @RequestParam int maximo){
 		ModelAndView mav;
 
 		//Esto hace la comparacion para la busqueda de productos por marca y precio max/min
@@ -31,6 +31,7 @@ public class BusquedaController {
 					if (prod.getPrecio() < maximo || (maximo == 0)){
 						if (prod.getPrecio() > minimo){
 							productos.add(prod);
+							
 						}
 					}
 				}
