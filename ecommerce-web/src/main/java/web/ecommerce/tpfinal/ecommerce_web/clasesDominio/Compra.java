@@ -2,6 +2,9 @@ package web.ecommerce.tpfinal.ecommerce_web.clasesDominio;
 
 import java.util.List;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Compra {
 		private Usuario usuario;
 		private List<ProductoComprable> productos;
