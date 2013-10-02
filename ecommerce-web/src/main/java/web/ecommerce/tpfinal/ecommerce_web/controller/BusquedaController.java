@@ -23,11 +23,11 @@ public class BusquedaController {
 		ModelAndView mav;
 
 		//Esto hace la comparacion para la busqueda de productos por marca y precio max/min
-		if (nombre == null && minimo == 0 && maximo == 0){
+		if (nombre != null || minimo != 0 || maximo != 0){
 			mav = new ModelAndView("redirect:resultado");
 			ArrayList<Producto> productos = new ArrayList<Producto>();
-			for (Producto prod : ProductoRepository.findAll())
-				if (prod.getFabricante().equals(nombre) || nombre.equals(null)){
+			for (Producto prod : ProductoRepository.findAll()){
+				if (prod.getFabricante().getNombre().equals(nombre) || nombre.equals(null)){
 					if (prod.getPrecio() < maximo || (maximo == 0)){
 						if (prod.getPrecio() > minimo){
 							productos.add(prod);
@@ -35,6 +35,8 @@ public class BusquedaController {
 						}
 					}
 				}
+			}
+			mav.getModelMap().addAttribute("producto", productos);
 		}
 		else {
 			mav = new ModelAndView("redirect:buscar");
