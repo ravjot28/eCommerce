@@ -1,41 +1,50 @@
 package web.ecommerce.tpfinal.ecommerce_web.clasesDominio;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Usuario {
-		private String email;
-		private String password;
-		private String perfil;
+	@Id
+	private String email;
+	private String password;
+	private String perfil;
+
+	public Usuario() {
 		
-		public Usuario(String email, String password, String perfil) {
-			
-			this.email = email;
-			this.password = password;
-			this.perfil = perfil;
-		}
+	}
+	
+	public Usuario(String email, String password, String perfil) {
 
-		public String getEmail() {
-			return email;
-		}
+		this.email = email;
+		this.password = password;
+		this.perfil = perfil;
+	}
 
-		public void setEmail(String email) {
-			this.email = email;
-		}
+	public String getEmail() {
+		return email;
+	}
 
-		public String getPassword() {
-			return password;
-		}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
-		public void setPassword(String password) {
-			this.password = password;
-		}
+	public String getPassword() {
+		return password;
+	}
 
-		public String getPerfil() {
-			return perfil;
-		}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-		public void setPerfil(String perfil) {
-			this.perfil = perfil;
-		}
-		
-		
-		
+	public String getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
+	}
+
+
+
 }

@@ -42,7 +42,7 @@ public class ProductoRepository {
 	private EntityManager entityManager;
 	
 	public List<Producto> findAll() {
-		TypedQuery<Producto> prod = entityManager.createQuery("SELECT a from Producto a", Producto.class);
+		TypedQuery<Producto> prod = entityManager.createQuery("SELECT a FROM Producto a", Producto.class);
 		List<Producto> productos = prod.getResultList();
 		
 		return productos;
@@ -58,5 +58,6 @@ public class ProductoRepository {
 	}
 	
 }
+
 
 

@@ -2,23 +2,28 @@ package web.ecommerce.tpfinal.ecommerce_web.clasesDominio;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Producto {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	
 	private String nombre;
+	
+	@OneToOne
 	private Fabricante fabricante;
 	private float precio;
-	@Id
-	@GeneratedValue
-	private int idProducto;
 
 
 	public Producto(String nombre, Fabricante fabricante, float precio, int idProducto) {
 		this.nombre = nombre;
 		this.fabricante = fabricante;
 		this.precio = precio;
-		this.idProducto = idProducto;
+		this.id = idProducto;
 	}
 	public String getNombre() {
 		return nombre;
@@ -38,12 +43,12 @@ public class Producto {
 	public void setPrecio(float precio) {
 		this.precio = precio;
 	}
-	public int getIdProducto() {
-		return idProducto;
+	public int getId() {
+		return id;
 	}
-	public void setIdProducto(int idProducto) {
-		this.idProducto = idProducto;
+	public void setId(int idProducto) {
+		this.id = idProducto;
 	}
-	
+
 
 }
