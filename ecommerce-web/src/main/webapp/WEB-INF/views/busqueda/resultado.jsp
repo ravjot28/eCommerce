@@ -28,6 +28,12 @@
 					<td>${producto.fabricante}</td>
 					<td><fmt:formatNumber type="currency"
 							value="${producto.precio}" currencyCode="ARS" /></td>
+					<td>
+						<form action="agregarAlCarrito" method="post">
+							<input type="hidden" value="${producto.id}" name="idProducto"/>
+							<input type="submit" value="Agregar al Carrito" name="agregarAlCarrito"/>
+						</form>
+					</td>
 				</tr>
 			</c:forEach>
 	</table>

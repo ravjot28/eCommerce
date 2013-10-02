@@ -50,9 +50,9 @@ public class CompraRepository {
 	
 	public int getIndex(ProductoComprable producto){
 		int index = -1;
-		int idProducto = producto.getProducto().getIdProducto();
+		int idProducto = producto.getProducto().getId();
 		for(ProductoComprable item : compraRepository.findAll()){
-			if(item.getProducto().getIdProducto() != idProducto){
+			if(item.getProducto().getId() != idProducto){
 				index++;
 			}
 		}
