@@ -11,8 +11,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import projecto_finall.clasesDominio.Comentario;
-import projecto_finall.controller.ComentarioController;
+import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Comentario;
+import web.ecommerce.tpfinal.ecommerce_web.controller.ComentarioController;
+
 
 @Repository
 @Transactional(readOnly = true)

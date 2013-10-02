@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import projecto_finall.clasesDominio.Comentario;
-import projecto_finall.repository.ComentariosRepository;
+import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Comentario;
+import web.ecommerce.tpfinal.ecommerce_web.repository.ComentariosRepository;
+
 
 @Controller
 @RequestMapping(value="/comentario/**")
