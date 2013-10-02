@@ -18,7 +18,7 @@
 			<tr>
 				<td></td>
 				<td>${compra.usuario}</td>
-				<td>${compra.producto}</td>
+				<td>${compra.productos}</td>
 				<td>
 					<form action="" method="POST">
 						<input type="hidden" value="${compra.usuario}" name="usuario"/>

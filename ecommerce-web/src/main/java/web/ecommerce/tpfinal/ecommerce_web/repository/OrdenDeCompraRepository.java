@@ -33,7 +33,9 @@ public class OrdenDeCompraRepository {
 	/*************************************************************************************************************/
 	//Extrae los datos de la base de datos de la tabla compra en una lista.
 	public List<Compra> extraerCompras(){
-		TypedQuery<Compra> q = entityManager.createQuery("select a from Compra c", Compra.class);
+		
+		
+		TypedQuery<Compra> q = entityManager.createQuery("select a from Compra a", Compra.class);
 		List<Compra> compras = q.getResultList();
 
 		return compras;
@@ -46,7 +48,7 @@ public class OrdenDeCompraRepository {
 
 	//Extrae los datos de la tabla Comprasverificadas.
 	public List<Compra> extraerUsuarios(){
-		TypedQuery<Compra> q = entityManager.createQuery("select a from Compra c", Compra.class);
+		TypedQuery<Compra> q = entityManager.createQuery("select a from Compra a", Compra.class);
 		List<Compra> usuarios = q.getResultList();
 
 		return usuarios;

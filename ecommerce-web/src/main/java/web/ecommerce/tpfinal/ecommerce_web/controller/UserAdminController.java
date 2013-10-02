@@ -1,5 +1,6 @@
 package web.ecommerce.tpfinal.ecommerce_web.controller;
 
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Compra;
+import web.ecommerce.tpfinal.ecommerce_web.config.HibernateUtilities;
 import web.ecommerce.tpfinal.ecommerce_web.repository.OrdenDeCompraRepository;
 
 
@@ -36,8 +38,17 @@ public class UserAdminController {
 	//crea la vista del admin
 	@RequestMapping(value="admin", method=RequestMethod.GET)
 	public ModelAndView vistaAdmin(){
+		
 		ModelAndView mav = new ModelAndView();
+		
+		Session session = HibernateUtilities.getSessionFactory().openSession();
+		session.beginTransaction();
+		
 		mav.getModelMap().addAttribute("compras", ordenDeCompraRepository.extraerCompras());
+		
+		session.beginTransaction().commit();
+		session.close();
+		HibernateUtilities.getSessionFactory().close();
 		
 		return mav;
 	}

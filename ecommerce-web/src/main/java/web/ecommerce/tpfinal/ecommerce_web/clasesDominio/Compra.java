@@ -26,6 +26,8 @@ public class Compra {
 	
 	private String estadoCompra;
 	
+	public Compra(){}
+	
 	public Compra(Usuario usuario, List<ProductoComprable> productos, boolean estado) {
 		this.estado = true;
 		this.usuario = usuario;
