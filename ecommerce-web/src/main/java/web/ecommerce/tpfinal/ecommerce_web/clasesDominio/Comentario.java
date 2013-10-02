@@ -1,12 +1,27 @@
 package web.ecommerce.tpfinal.ecommerce_web.clasesDominio;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
 public class Comentario {
 		private String texto;
 		private IComentable comentable;
 		private Usuario usuario;
 		private boolean aceptado = true;
+		@Id
+		@GeneratedValue
+		private int numeroComentario;
 		
+		public int getNumeroComentario() {
+			return numeroComentario;
+		}
+
+		public void setNumeroComentario(int id) {
+			this.numeroComentario = id;
+		}
+
 		public Comentario(String texto, IComentable comentable,
 				Usuario usuario, boolean aceptado) {
 			
@@ -47,9 +62,4 @@ public class Comentario {
 		public void setAceptado(boolean aceptado) {
 			this.aceptado = aceptado;
 		}
-		
-		
-		
-		
-		
 }
