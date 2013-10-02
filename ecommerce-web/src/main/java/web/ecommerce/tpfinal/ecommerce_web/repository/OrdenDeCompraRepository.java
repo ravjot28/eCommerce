@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jolbox.bonecp.BoneCPDataSource;
 
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Compra;
-import web.ecommerce.tpfinal.ecommerce_web.ordenDeCompra.ComprasVerificadas;
 
 @Repository
 @Transactional(readOnly = true)
@@ -74,14 +73,14 @@ public class OrdenDeCompraRepository {
 	}
 
 	//Carga datos a la tabla compraVerificadas.
-	public void cargarComprasVerificadas(ComprasVerificadas compra){
+	public void cargarCompras(Compra compra){
 		entityManager.persist(compra);
 	}
 
 	//Extrae los datos de la tabla Comprasverificadas.
-	public List<ComprasVerificadas> extraerUsuarios(){
-		TypedQuery<ComprasVerificadas> q = entityManager.createQuery("select a from Compra c", ComprasVerificadas.class);
-		List<ComprasVerificadas> usuarios = q.getResultList();
+	public List<Compra> extraerUsuarios(){
+		TypedQuery<Compra> q = entityManager.createQuery("select a from Compra c", Compra.class);
+		List<Compra> usuarios = q.getResultList();
 
 		return usuarios;
 	}
