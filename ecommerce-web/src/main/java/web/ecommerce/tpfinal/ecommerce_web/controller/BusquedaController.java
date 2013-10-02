@@ -1,4 +1,4 @@
-/*package web.ecommerce.tpfinal.ecommerce_web.controller;
+package web.ecommerce.tpfinal.ecommerce_web.controller;
 
 import java.util.ArrayList;
 
@@ -20,8 +20,8 @@ public class BusquedaController {
 	@Autowired
 	private ProductoRepository ProductoRepository;
 	
-	@Autowired
-	private CompraRepository compraRepository;
+	//@Autowired
+	//private CompraRepository compraRepository;
 	
 	@RequestMapping(value="/busqueda", method=RequestMethod.POST)
 	public ModelAndView busqueda(@RequestParam String nombre, @RequestParam int minimo, @RequestParam int maximo){
@@ -51,7 +51,7 @@ public class BusquedaController {
 	}
 	
 	//Avisar que se tiene que pasar a false el estado de Compra
-	@RequestMapping(value="/agregarAlCarrito", method=RequestMethod.POST)
+	/*@RequestMapping(value="/agregarAlCarrito", method=RequestMethod.POST)
 	public ModelAndView agregarAlCarrito(@RequestParam int idProducto){
 		Compra compra = null;
 		ModelAndView mav = new ModelAndView();
@@ -64,7 +64,7 @@ public class BusquedaController {
 			compraRepository.agregarALista(productoComprable);
 		}
 		return mav;
-	}
+	}*/
 	
 	
 	@RequestMapping(value="/volver", method=RequestMethod.POST)
