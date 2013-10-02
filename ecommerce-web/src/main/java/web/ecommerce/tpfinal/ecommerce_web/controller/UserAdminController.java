@@ -5,11 +5,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Compra;
-import web.ecommerce.tpfinal.ecommerce_web.ordenDeCompra.ComprasVerificadas;
 import web.ecommerce.tpfinal.ecommerce_web.repository.OrdenDeCompraRepository;
 
 
@@ -46,13 +44,10 @@ public class UserAdminController {
 	
 	//Obtiene los datos del admin.jsp y subirlo a la tabla que se va a llamar comprasVerificadas
 	@RequestMapping(value="verificarCompras", method=RequestMethod.POST)
-	public ModelAndView verificarCompras(@ModelAttribute ComprasVerificadas comprasVerificadas,
-			@RequestParam String estadoCompra){
+	public ModelAndView verificarCompras(@ModelAttribute Compra compra){
 		ModelAndView mav = new ModelAndView("rediect:admin");
 		
-		ComprasVerificadas auxComprasVerificadas = comprasVerificadas;
-		auxComprasVerificadas.setEstadoCompra(estadoCompra);
-		ordenDeCompraRepository.cargarComprasVerificadas(auxComprasVerificadas);
+		ordenDeCompraRepository.cargarCompras(compra);
 		
 		return mav;
 	}

@@ -20,7 +20,9 @@ public class Compra {
 	
 	@OneToMany
 	private List<ProductoComprable> productos;
-
+	
+	private String estadoCompra;
+	
 	public Compra(Usuario usuario, List<ProductoComprable> productos) {
 		this.usuario = usuario;
 		this.productos = productos;
@@ -48,6 +50,14 @@ public class Compra {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	public String getEstadoCompra() {
+		return estadoCompra;
+	}
+
+	public void setEstadoCompra(String estadoCompra) {
+		this.estadoCompra = estadoCompra;
 	}
 
 
