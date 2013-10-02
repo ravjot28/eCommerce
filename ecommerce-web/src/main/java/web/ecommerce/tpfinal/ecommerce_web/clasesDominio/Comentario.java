@@ -68,9 +68,4 @@ public class Comentario {
 	public void setAceptado(boolean aceptado) {
 		this.aceptado = aceptado;
 	}
-
-
-
-
-
 }

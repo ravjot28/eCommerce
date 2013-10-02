@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Comentario;
+import web.ecommerce.tpfinal.ecommerce_web.controller.ComentarioController;
 
 
 @Repository
