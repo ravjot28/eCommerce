@@ -23,7 +23,7 @@ public class BusquedaController {
 		ModelAndView mav;
 
 		//Esto hace la comparacion para la busqueda de productos por marca y precio max/min
-		if (nombre == null && minimo == 0 && maximo == 0){
+		if ((nombre != null) || (minimo != 0) || (maximo != 0)){
 			mav = new ModelAndView("redirect:resultado");
 			ArrayList<Producto> productos = new ArrayList<Producto>();
 			for (Producto prod : ProductoRepository.findAll())
