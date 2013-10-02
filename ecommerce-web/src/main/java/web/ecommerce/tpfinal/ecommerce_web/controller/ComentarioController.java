@@ -20,11 +20,11 @@ public class ComentarioController {
 	private ComentariosRepository comentariosRepository;
 
 	@RequestMapping(value="/comentario", method=RequestMethod.GET)
-	public ModelAndView comentario(@RequestParam("id") int id, @RequestParam("nombre") String nombre){
+	public ModelAndView comentario(){
 		ModelAndView mav = new ModelAndView();
-		mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll(id));
-		mav.getModelMap().addAttribute("nombre", nombre);
-		mav.getModelMap().addAttribute("idComentable", id);
+		//mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll(23));
+		//mav.getModelMap().addAttribute("nombre", "algo");
+		//mav.getModelMap().addAttribute("idComentable", 123);
 		return mav;
 	}
 
