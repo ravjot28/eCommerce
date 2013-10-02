@@ -72,4 +72,4 @@ public class BusquedaController {
 		ModelAndView mav = new ModelAndView("redirect:/commerce/carrito");
 		return mav;
 	}
-}*/
+}
