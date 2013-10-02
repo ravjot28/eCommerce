@@ -28,7 +28,7 @@
 						</form>
 					</td>
 					<td>
-						<form action="verDetalle" method="get">
+						<form action="guardar" method="get">
 							<input type="text" value="${producto.cantidad}" name="cantidad" id="cantidad"/>
 							<input type="hidden" name="id" value="${producto.producto.id }"/>
 							<input type="submit" class="btn btn-link btn-sm" value="Guardar" name="guardar"/>

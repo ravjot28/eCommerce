@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Compra;
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Producto;
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.ProductoComprable;
-import web.ecommerce.tpfinal.ecommerce_web.controller.ProductoRepository;
 
 
 @Repository
@@ -51,13 +50,25 @@ public class CompraRepository {
 	
 	public int getIndex(ProductoComprable producto){
 		int index = -1;
-		int idProducto = producto.getId();
+		int idProducto = producto.getProducto().getIdProducto();
 		for(ProductoComprable item : compraRepository.findAll()){
-			if(item.getProducto().getId() != idProducto){
+			if(item.getProducto().getIdProducto() != idProducto){
 				index++;
 			}
 		}
 		return index+1;
+	}
+	
+	public boolean getEstado(){
+		boolean estado;
+		Compra compra = entityManager.find(Compra.class, 0);
+		estado = compra.isEstado();
+		return estado;
+	}
+	
+	public void agregarALista(ProductoComprable producto){
+		List<ProductoComprable> lista = compraRepository.findAll();
+		lista.add(producto);
 	}
 	
 }

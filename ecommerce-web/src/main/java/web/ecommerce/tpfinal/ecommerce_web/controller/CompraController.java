@@ -13,6 +13,7 @@ import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Producto;
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.ProductoComprable;
 import web.ecommerce.tpfinal.ecommerce_web.repository.CompraRepository;
 import web.ecommerce.tpfinal.ecommerce_web.repository.ProductoComprableRepository;
+import web.ecommerce.tpfinal.ecommerce_web.repository.ProductoRepository;
 
 public class CompraController {
 	@Controller
@@ -35,6 +36,13 @@ public class CompraController {
 			return mav;
 		}
 		
+		@RequestMapping(value="/detalle", method=RequestMethod.GET)
+		public ModelAndView detalle(Producto producto){
+			ModelAndView mav = new ModelAndView();	
+			mav.getModelMap().addAttribute("producto", producto);
+			return mav;
+		}
+		
 		@RequestMapping(value="/borrar", method=RequestMethod.GET)
 		public ModelAndView borrar(@RequestParam int id, @RequestParam int cantidad){
 			ModelAndView mav = new ModelAndView();	
@@ -53,9 +61,9 @@ public class CompraController {
 			return mav;
 		}
 		
-		@RequestMapping(value="/verDetalle", method=RequestMethod.GET)
+		@RequestMapping(value="/verDetalle", method=RequestMethod.POST)
 		public ModelAndView verDetalle(@RequestParam int id){
-			ModelAndView mav = new ModelAndView("redirect:resultado");
+			ModelAndView mav = new ModelAndView("redirect:detalle");
 			Producto producto = productoRepository.get(id);
 			mav.getModelMap().addAttribute(producto);
 			return mav;
