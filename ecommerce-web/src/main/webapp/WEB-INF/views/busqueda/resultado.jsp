@@ -12,7 +12,7 @@
 		<thead>
 
 			<tr>
-				<th> </th>
+				<th></th>
 				<th>Id</th>
 				<th>Nombre</th>
 				<th>Fabricante</th>
