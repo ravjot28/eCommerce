@@ -1,4 +1,4 @@
-package web.ecommerce.tpfinal.ecommerce_web.controller;
+/*package web.ecommerce.tpfinal.ecommerce_web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +36,7 @@ public class UserAdminController {
 	 *
 	 ***********************************************************************************/
 	//crea la vista del admin
-	@RequestMapping(value="admin", method=RequestMethod.GET)
+	/*@RequestMapping(value="admin", method=RequestMethod.GET)
 	public ModelAndView vistaAdmin(){
 		ModelAndView mav = new ModelAndView();
 		mav.getModelMap().addAttribute("compras", ordenDeCompraRepository.extraerCompras());
@@ -61,8 +61,8 @@ public class UserAdminController {
 	 ***********************************************************************************/
 	
 	//crea vista del user
-	@RequestMapping(value="user", method=RequestMethod.GET)
-	public ModelAndView vistaUser (){
+	/*@RequestMapping(value="user", method=RequestMethod.GET)
+	/*public ModelAndView vistaUser (){
 		ModelAndView mav = new ModelAndView();
 		
 		mav.getModelMap().addAttribute("usuarios", ordenDeCompraRepository.extraerUsuarios());
@@ -72,4 +72,4 @@ public class UserAdminController {
 	
 	
 
-}
+}*/

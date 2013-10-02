@@ -12,14 +12,14 @@ import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Comentario;
 import web.ecommerce.tpfinal.ecommerce_web.repository.ComentariosRepository;
 
 @Controller
-@RequestMapping(value="/comentarios/**")
+@RequestMapping(value="/comentario/**")
 
 public class ComentarioController {
 
 	@Autowired
 	private ComentariosRepository comentariosRepository;
 
-	@RequestMapping(value="/comentario", method=RequestMethod.GET)
+	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public ModelAndView comentario(@RequestParam("id") int id, @RequestParam("nombre") String nombre){
 		ModelAndView mav = new ModelAndView();
 		mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll(id));
@@ -27,19 +27,17 @@ public class ComentarioController {
 		mav.getModelMap().addAttribute("idComentable", id);
 		return mav;
 	}
-		
-	@RequestMapping(value="/mostrar", method=RequestMethod.GET)
-	public ModelAndView mostrar(@RequestParam("id") int id, @RequestParam("nombre") String nombre){
-		ModelAndView mav = new ModelAndView();
-		mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll());
-		mav.getModelMap().addAttribute("nombre", nombre);
-		return mav;
-	}
 
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public ModelAndView add(@ModelAttribute Comentario unComentario){
-		ModelAndView mav = new ModelAndView("redirect:comentario?id={}&nombre={}" ,Integer.toString(unComentario.getComentable().getID()), unComentario.getComentable().getNombre());
+		ModelAndView mav = null;
+		/** TODO: Esto no tiene mucha pinta
+		ModelAndView mav = new ModelAndView(
+				"redirect:comentario?id={}&nombre={}",
+				Integer.toString(unComentario.getComentable().getID()), 
+				unComentario.getComentable().getNombre());
 		comentariosRepository.create(unComentario);
+		**/
 		return mav;
 	}
 
@@ -73,5 +71,4 @@ public class ComentarioController {
 	}
 
 }
-
 
