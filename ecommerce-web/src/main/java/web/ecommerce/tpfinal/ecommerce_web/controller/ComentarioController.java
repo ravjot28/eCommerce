@@ -30,8 +30,14 @@ public class ComentarioController {
 
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public ModelAndView add(@ModelAttribute Comentario unComentario){
-		ModelAndView mav = new ModelAndView("redirect:comentario?id={}&nombre={}" ,Integer.toString(unComentario.getComentable().getID()), unComentario.getComentable().getNombre());
+		ModelAndView mav = null;
+		/** TODO: Esto no tiene mucha pinta
+		ModelAndView mav = new ModelAndView(
+				"redirect:comentario?id={}&nombre={}",
+				Integer.toString(unComentario.getComentable().getID()), 
+				unComentario.getComentable().getNombre());
 		comentariosRepository.create(unComentario);
+		**/
 		return mav;
 	}
 

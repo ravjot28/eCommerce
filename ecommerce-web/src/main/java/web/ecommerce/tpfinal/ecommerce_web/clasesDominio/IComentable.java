@@ -1,9 +1,18 @@
 package web.ecommerce.tpfinal.ecommerce_web.clasesDominio;
 
-public interface IComentable {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
-	int getID();
-
-	Object getNombre();
-		
+@Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public abstract class IComentable {
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long id;
+	
+	
 }
