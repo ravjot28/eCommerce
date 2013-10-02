@@ -1,4 +1,4 @@
-package web.ecommerce.tpfinal.ecommerce_web.repository;
+/*package web.ecommerce.tpfinal.ecommerce_web.repository;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Compra;
 public class OrdenDeCompraRepository {
 	
 	/************************************************************************************************************/
-	private DataSource ds;
+	/*private DataSource ds;
 
 	private OrdenDeCompraRepository(){
 		setDs(setupDataSource());
@@ -29,7 +29,7 @@ public class OrdenDeCompraRepository {
 	/* Private constructor prevents 
 	 * instantiation from other classes */
 
-	public static OrdenDeCompraRepository getInstance() { 
+	/*public static OrdenDeCompraRepository getInstance() { 
 		return INSTANCE; 
 	}
 
@@ -55,8 +55,8 @@ public class OrdenDeCompraRepository {
 	/*************************************************************************************************************/
 
 
-	@PersistenceContext
-	private EntityManager entityManager;
+	/*@PersistenceContext
+	/*private EntityManager entityManager;
 
 	//Carga los changuitos a la base de datos a la tabla compra.
 	public void cargarChanguitoDB(Compra compra){
@@ -65,7 +65,7 @@ public class OrdenDeCompraRepository {
 
 	/*************************************************************************************************************/
 	//Extrae los datos de la base de datos de la tabla compra en una lista.
-	public List<Compra> extraerCompras(){
+	/*public List<Compra> extraerCompras(){
 		TypedQuery<Compra> q = entityManager.createQuery("select a from Compra c", Compra.class);
 		List<Compra> compras = q.getResultList();
 
@@ -93,4 +93,4 @@ public class OrdenDeCompraRepository {
 		this.ds = ds;
 	}
 
-}
+}*/

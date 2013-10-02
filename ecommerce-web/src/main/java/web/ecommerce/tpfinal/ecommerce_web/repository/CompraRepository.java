@@ -1,4 +1,4 @@
-package web.ecommerce.tpfinal.ecommerce_web.repository;
+/*package web.ecommerce.tpfinal.ecommerce_web.repository;
 
 import java.util.List;
 
@@ -71,4 +71,4 @@ public class CompraRepository {
 		lista.add(producto);
 	}
 	
-}
+}*/

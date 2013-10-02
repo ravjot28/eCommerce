@@ -1,4 +1,4 @@
-package web.ecommerce.tpfinal.ecommerce_web.controller;
+/*package web.ecommerce.tpfinal.ecommerce_web.controller;
 
 import java.util.List;
 
@@ -69,4 +69,4 @@ public class CompraController {
 			return mav;
 		}
 	}
-}
+}*/
