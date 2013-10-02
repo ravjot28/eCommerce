@@ -47,7 +47,7 @@ public class ComentariosRepository {
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException(e);
 		}
-		String url = "jdbc:mysql://localhost/ecommerce-web";
+		String url = "jdbc:mysql://localhost/ecommerce";
 		String user = "root";
 		String password = "";
 
