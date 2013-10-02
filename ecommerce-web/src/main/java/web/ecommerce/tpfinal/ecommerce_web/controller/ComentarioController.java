@@ -12,7 +12,7 @@ import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Comentario;
 import web.ecommerce.tpfinal.ecommerce_web.repository.ComentariosRepository;
 
 @Controller
-@RequestMapping(value="/comentario/**")
+@RequestMapping(value="/comentarios/**")
 
 public class ComentarioController {
 
@@ -20,24 +20,26 @@ public class ComentarioController {
 	private ComentariosRepository comentariosRepository;
 
 	@RequestMapping(value="/comentario", method=RequestMethod.GET)
-	public ModelAndView comentario(){
+	public ModelAndView comentario(@RequestParam("id") int id, @RequestParam("nombre") String nombre){
 		ModelAndView mav = new ModelAndView();
-		//mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll(23));
-		//mav.getModelMap().addAttribute("nombre", "algo");
-		//mav.getModelMap().addAttribute("idComentable", 123);
+		mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll(id));
+		mav.getModelMap().addAttribute("nombre", nombre);
+		mav.getModelMap().addAttribute("idComentable", id);
+		return mav;
+	}
+		
+	@RequestMapping(value="/mostrar", method=RequestMethod.GET)
+	public ModelAndView mostrar(@RequestParam("id") int id, @RequestParam("nombre") String nombre){
+		ModelAndView mav = new ModelAndView();
+		mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll());
+		mav.getModelMap().addAttribute("nombre", nombre);
 		return mav;
 	}
 
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public ModelAndView add(@ModelAttribute Comentario unComentario){
-		ModelAndView mav = null;
-		/** TODO: Esto no tiene mucha pinta
-		ModelAndView mav = new ModelAndView(
-				"redirect:comentario?id={}&nombre={}",
-				Integer.toString(unComentario.getComentable().getID()), 
-				unComentario.getComentable().getNombre());
+		ModelAndView mav = new ModelAndView("redirect:comentario?id={}&nombre={}" ,Integer.toString(unComentario.getComentable().getID()), unComentario.getComentable().getNombre());
 		comentariosRepository.create(unComentario);
-		**/
 		return mav;
 	}
 

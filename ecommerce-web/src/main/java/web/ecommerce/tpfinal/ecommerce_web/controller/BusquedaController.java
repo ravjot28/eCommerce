@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Compra;
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Producto;
+import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.ProductoComprable;
 import web.ecommerce.tpfinal.ecommerce_web.repository.*;
 @Controller
 @RequestMapping(value="/buscar/**")
@@ -17,6 +19,9 @@ public class BusquedaController {
 
 	@Autowired
 	private ProductoRepository ProductoRepository;
+	
+	@Autowired
+	private CompraRepository compraRepository;
 	
 	@RequestMapping(value="/busqueda", method=RequestMethod.POST)
 	public ModelAndView busqueda(@RequestParam String nombre, @RequestParam int minimo, @RequestParam int maximo){
@@ -44,5 +49,27 @@ public class BusquedaController {
 		}
 		return mav;
 	}
-
+	
+	//Avisar que se tiene que pasar a false el estado de Compra
+	@RequestMapping(value="/agregarAlCarrito", method=RequestMethod.POST)
+	public ModelAndView agregarAlCarrito(@RequestParam int idProducto){
+		Compra compra = null;
+		ModelAndView mav = new ModelAndView();
+		Producto producto = ProductoRepository.get(idProducto);
+		ProductoComprable productoComprable = new ProductoComprable(producto, producto.getPrecio(), 1);
+		if(compraRepository.getEstado() == false){
+			compraRepository.create(compra);
+			compraRepository.agregarALista(productoComprable);
+		}else{
+			compraRepository.agregarALista(productoComprable);
+		}
+		return mav;
+	}
+	
+	
+	@RequestMapping(value="/volver", method=RequestMethod.POST)
+	public ModelAndView volver(){
+		ModelAndView mav = new ModelAndView("redirect:/commerce/carrito");
+		return mav;
+	}
 }
