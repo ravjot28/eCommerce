@@ -18,6 +18,7 @@
         <org.slf4j-version>1.7.5</org.slf4j-version>
         <ch.qos.logback-version>1.0.13</ch.qos.logback-version>
         <org.apache.tiles-version>3.0.1</org.apache.tiles-version>
+        <mysql.mysql-connector-version>5.1.6</mysql.mysql-connector-version>
     </properties>
     <repositories>
         <repository>
@@ -221,7 +222,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.6</version>
+			<version>${mysql.mysql-connector-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.jolbox</groupId>

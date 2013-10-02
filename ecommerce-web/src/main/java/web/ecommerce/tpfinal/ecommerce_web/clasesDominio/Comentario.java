@@ -2,69 +2,75 @@ package web.ecommerce.tpfinal.ecommerce_web.clasesDominio;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Comentario {
-		private String texto;
-		private IComentable comentable;
-		private Usuario usuario;
-		private boolean aceptado = true;
-		@Id
-		@GeneratedValue
-		private int numeroComentario;
-		
-		public int getNumeroComentario() {
-			return numeroComentario;
-		}
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 
-		public void setNumeroComentario(int id) {
-			this.numeroComentario = id;
-		}
+	private String texto;
+	
+	private transient IComentable comentable;
+	
+	@OneToOne
+	private Usuario usuario;
+	private boolean aceptado = true;
 
-		public Comentario(String texto, IComentable comentable,
-				Usuario usuario, boolean aceptado) {
-			
-			this.texto = texto;
-			this.comentable = comentable;
-			this.usuario = usuario;
-			this.aceptado = aceptado;
-		}
+	public int getId() {
+		return id;
+	}
 
-		public String getTexto() {
-			return texto;
-		}
+	public void setId(int id) {
+		this.id = id;
+	}
 
-		public void setTexto(String texto) {
-			this.texto = texto;
-		}
+	public Comentario(String texto, IComentable comentable,
+			Usuario usuario, boolean aceptado) {
 
-		public IComentable getComentable() {
-			return comentable;
-		}
+		this.texto = texto;
+		this.comentable = comentable;
+		this.usuario = usuario;
+		this.aceptado = aceptado;
+	}
 
-		public void setComentable(IComentable comentable) {
-			this.comentable = comentable;
-		}
+	public String getTexto() {
+		return texto;
+	}
 
-		public Usuario getUsuario() {
-			return usuario;
-		}
+	public void setTexto(String texto) {
+		this.texto = texto;
+	}
 
-		public void setUsuario(Usuario usuario) {
-			this.usuario = usuario;
-		}
+	public IComentable getComentable() {
+		return comentable;
+	}
 
-		public boolean isAceptado() {
-			return aceptado;
-		}
+	public void setComentable(IComentable comentable) {
+		this.comentable = comentable;
+	}
 
-		public void setAceptado(boolean aceptado) {
-			this.aceptado = aceptado;
-		}
-		
-		
-		
-		
-		
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public boolean isAceptado() {
+		return aceptado;
+	}
+
+	public void setAceptado(boolean aceptado) {
+		this.aceptado = aceptado;
+	}
+
+
+
+
+
 }
