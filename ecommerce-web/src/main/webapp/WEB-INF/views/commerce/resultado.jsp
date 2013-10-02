@@ -26,7 +26,6 @@
 					<td>${producto.id}</td>
 					<td>${producto.nombre}</td>
 					<td>${producto.fabricante}</td>
-					<td>${producto.precio}</td>
 					<td><fmt:formatNumber type="currency"
 							value="${producto.precio}" currencyCode="ARS" /></td>
 				</tr>

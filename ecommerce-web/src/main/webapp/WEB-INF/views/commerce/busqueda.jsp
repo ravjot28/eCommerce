@@ -14,7 +14,7 @@
 				for="precio_minimo">minimo</label> <input id="precio_minimo"
 				type="text" name="minimo" /> <label for="precio_maximo">maximo</label>
 			<input id="precio_maximo" type="text" name="maximo" />
-
+			<a href= "/ecommerce-web/buscar/resultado" class="btn btn-success btn-lg"  type="button" >Buscar</a>
 
 
 		</form>

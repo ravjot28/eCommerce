@@ -17,7 +17,7 @@ public class BusquedaController {
 
 	@Autowired
 	private ProductoRepository ProductoRepository;
-
+	
 	@RequestMapping(value="/busqueda", method=RequestMethod.POST)
 	public ModelAndView busqueda(@RequestParam String nombre, int minimo, int maximo){
 		ModelAndView mav;

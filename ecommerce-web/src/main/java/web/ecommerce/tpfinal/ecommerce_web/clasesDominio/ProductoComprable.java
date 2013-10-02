@@ -1,15 +1,21 @@
 package web.ecommerce.tpfinal.ecommerce_web.clasesDominio;
 
+
+
 public class ProductoComprable {
+	
+		
 		private Producto producto;
 		private float precioPagado;
 		private int cantidad;
+		
 		public ProductoComprable(Producto producto, float precioPagado,
-				int cantidad) {
+				int cantidad ) {
 			
 			this.producto = producto;
 			this.precioPagado = precioPagado;
 			this.cantidad = cantidad;
+			
 		}
 		public Producto getProducto() {
 			return producto;
