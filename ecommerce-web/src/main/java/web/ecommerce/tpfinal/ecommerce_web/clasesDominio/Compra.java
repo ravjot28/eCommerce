@@ -11,7 +11,9 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Compra {
-<<<<<<< HEAD
+
+	private boolean estado = false;
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
@@ -24,30 +26,11 @@ public class Compra {
 	
 	private String estadoCompra;
 	
-	public Compra(Usuario usuario, List<ProductoComprable> productos) {
+	public Compra(Usuario usuario, List<ProductoComprable> productos, boolean estado) {
+		this.estado = true;
 		this.usuario = usuario;
 		this.productos = productos;
 	}
-=======
-
-		private boolean estado = false;
-		
-		@Id
-		@GeneratedValue(strategy=GenerationType.IDENTITY)
-		private long id;
-		
-		@OneToOne
-		private Usuario usuario;
-		
-		@OneToMany
-		private List<ProductoComprable> productos;
-		
-		public Compra(Usuario usuario, List<ProductoComprable> productos, boolean estado) {
-			this.estado = true;
-			this.usuario = usuario;
-			this.productos = productos;
-		}
->>>>>>> d3ce3a7d18a7738151b44c9a20719494a4752dd0
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -81,7 +64,6 @@ public class Compra {
 	public void setId(long id) {
 		this.id = id;
 	}
-<<<<<<< HEAD
 
 	public String getEstadoCompra() {
 		return estadoCompra;
@@ -91,9 +73,4 @@ public class Compra {
 		this.estadoCompra = estadoCompra;
 	}
 
-
-
-
-=======
->>>>>>> d3ce3a7d18a7738151b44c9a20719494a4752dd0
 }
