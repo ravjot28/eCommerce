@@ -7,7 +7,7 @@
 </div>
 <br />
 <div>
-	<table>
+	<table class="table table-bordered">
 		<tr>
 			<td>ID</td>
 			<td>Usuario</td>
@@ -27,7 +27,7 @@
 							<option values="aceptado">Aceptado</option>
 							<option values="rechazado">Rechazado</option>
 						</select>
-						<button type="submit">Aceptar</button>
+						<button type="submit" class="btn btn-primary">Aceptar</button>
 					</form>
 				</td>
 			</tr>

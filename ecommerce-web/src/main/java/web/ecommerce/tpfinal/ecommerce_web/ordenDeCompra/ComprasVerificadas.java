@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.ProductoComprable;
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Usuario;
@@ -14,7 +16,9 @@ public class ComprasVerificadas {
 	@Id
 	@GeneratedValue
 	private int id;
+	@OneToOne
 	private Usuario usuario;
+	@OneToMany
 	private List<ProductoComprable> producto;
 	private String estadoCompra;
 	

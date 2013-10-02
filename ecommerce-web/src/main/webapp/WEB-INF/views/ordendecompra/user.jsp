@@ -7,7 +7,7 @@
 </div>
 <br />
 <div>
-	<table>
+	<table class="table table-bordered">
 		<tr>
 			<td>ID</td>
 			<td>Usuario</td>
