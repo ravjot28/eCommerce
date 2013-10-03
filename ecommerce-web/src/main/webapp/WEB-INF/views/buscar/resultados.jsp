@@ -32,7 +32,7 @@
 					<form action="//localhost:8080/ecommerce-web/comentario/index" method="get">
 						<input type="hidden" name="id" value="${producto.id}"/>
 						<input type="hidden" name="flag" value="true"/>
-						<input type="submit" value="Comentar" />
+						<input class="button-left" type="submit" value="Comentar" />
 					</form>
 					</td>
 				</tr>
