@@ -26,12 +26,14 @@ public class ComentarioController {
 	AccountRepository accountRepository;
 
 	@RequestMapping(value="/index", method=RequestMethod.GET)
-	public ModelAndView indexproducto(@RequestParam("id") int id, @RequestParam("flag") boolean flag){	
+	public ModelAndView indexproducto(@RequestParam("id") int id, @RequestParam("flag") boolean flag, Principal principal){	
 	ModelAndView mav = new ModelAndView();
 		mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll(id, flag));
 		mav.getModelMap().addAttribute("idComentable", id);
 		mav.getModelMap().addAttribute("flag", flag);
-
+		Account account = accountRepository.findByEmail(principal.getName());
+		mav.getModelMap().addAttribute("account", account); 
+		
 		return mav;
 	}
 
