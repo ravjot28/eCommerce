@@ -16,10 +16,10 @@
 		</tr>
 		<c:forEach items="${usuarios}" var="usuario">
 			<tr>
-				<td>${usuarios.id}</td>
-				<td>${usuarios.usuario}</td>
-				<td>${usuarios.producto}</td>
-				<td>${usuarios.estadoCompra}</td>
+				<td>${usuario.id}</td>
+				<td>${usuario.usuario}</td>
+				<td>${usuario.productos}</td>
+				<td>${usuario.estadoCompra}</td>
 			</tr>
 		</c:forEach>
 	</table>

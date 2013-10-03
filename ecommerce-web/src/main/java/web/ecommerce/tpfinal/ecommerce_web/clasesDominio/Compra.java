@@ -14,6 +14,7 @@ public class Compra {
 
 	private boolean estado = false;
 	
+	//atributos
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
@@ -25,6 +26,10 @@ public class Compra {
 	private List<ProductoComprable> productos;
 	
 	private String estadoCompra;
+	
+	
+	//metodos
+	public Compra(){}
 	
 	public Compra(Usuario usuario, List<ProductoComprable> productos, boolean estado) {
 		this.estado = true;
