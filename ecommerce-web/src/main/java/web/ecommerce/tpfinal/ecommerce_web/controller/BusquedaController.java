@@ -97,9 +97,9 @@ public class BusquedaController {
 	}*/
 	
 	
-	@RequestMapping(value="/volver", method=RequestMethod.POST)
+/*	@RequestMapping(value="/volver", method=RequestMethod.POST)
 	public ModelAndView volver(){
 		ModelAndView mav = new ModelAndView("redirect:/commerce/carrito");
 		return mav;
-	}
+	}*/
 }

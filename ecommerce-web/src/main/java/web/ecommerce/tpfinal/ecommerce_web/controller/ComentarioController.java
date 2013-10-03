@@ -20,38 +20,33 @@ public class ComentarioController {
 	private ComentariosRepository comentariosRepository;
 
 	@RequestMapping(value="/index", method=RequestMethod.GET)
-	public ModelAndView comentario(@RequestParam("id") int id, @RequestParam("nombre") String nombre){
-		ModelAndView mav = new ModelAndView();
-		mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll(id));
-		mav.getModelMap().addAttribute("nombre", nombre);
-		mav.getModelMap().addAttribute("idComentable", id);
+	//public ModelAndView comentario(@RequestParam("id") int id, @RequestParam("nombre") String nombre){
+	public ModelAndView comentario(){	
+	ModelAndView mav = new ModelAndView();
+		mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll(33));
+		mav.getModelMap().addAttribute("nombre", "nombre");
+		mav.getModelMap().addAttribute("idComentable", 33);
 		return mav;
 	}
 
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public ModelAndView add(@ModelAttribute Comentario unComentario){
-		ModelAndView mav = null;
-		/** TODO: Esto no tiene mucha pinta
-		ModelAndView mav = new ModelAndView(
-				"redirect:comentario?id={}&nombre={}",
-				Integer.toString(unComentario.getComentable().getID()), 
-				unComentario.getComentable().getNombre());
+		ModelAndView mav = new ModelAndView("redirect:index");
 		comentariosRepository.create(unComentario);
-		**/
 		return mav;
 	}
 
 	@RequestMapping(value="/block", method=RequestMethod.GET)
-	public ModelAndView block(@RequestParam("numeroComentario") int numeroComentario){
-		ModelAndView mav = new ModelAndView();
-		comentariosRepository.block(numeroComentario);
+	public ModelAndView block(@RequestParam("id") int id){
+		ModelAndView mav = new ModelAndView("redirect:index");
+		comentariosRepository.block(id);
 		return mav;
 	}
 
 	@RequestMapping(value="/remove", method=RequestMethod.GET)
-	public ModelAndView remove(@RequestParam("numeroComentario") int numeroComentario){
-		ModelAndView mav = new ModelAndView();
-		comentariosRepository.delete(numeroComentario);
+	public ModelAndView remove(@RequestParam("id") int id){
+		ModelAndView mav = new ModelAndView("redirect:index");
+		comentariosRepository.delete(id);
 		return mav;
 	}
 
@@ -67,6 +62,7 @@ public class ComentarioController {
 	public ModelAndView edit(@ModelAttribute Comentario unComentario){
 		ModelAndView mav = new ModelAndView();
 		comentariosRepository.save(unComentario);
+		
 		return mav;
 	}
 

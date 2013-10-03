@@ -11,6 +11,10 @@ public class Fabricante {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	private String nombre;
+	
+	public Fabricante(){
+		
+	}
 
 	public long getId() {
 		return id;
