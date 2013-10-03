@@ -24,7 +24,8 @@ public class ComentarioController {
 	private ComentariosRepository comentariosRepository;
 	@Autowired
 	AccountRepository accountRepository;
-
+	//Recibe como parametro el id y un flag, con el flag va saber si es un producto o un fabricante.
+	//Y lo muestra en pantalla
 	@RequestMapping(value="/index", method=RequestMethod.GET)
 	public ModelAndView indexproducto(@RequestParam("id") int id, @RequestParam("flag") boolean flag, Principal principal){	
 	ModelAndView mav = new ModelAndView();
@@ -36,7 +37,7 @@ public class ComentarioController {
 		
 		return mav;
 	}
-
+	//Agrega un nuevo comentario y lo diferencia
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public ModelAndView add(@ModelAttribute Comentario unComentario,@RequestParam("flag") boolean flag,@RequestParam("idComentable") int idComentable, Principal principal){
 		ModelAndView mav = new ModelAndView("redirect:index?id=" + idComentable + "&flag=" + flag);
@@ -52,14 +53,14 @@ public class ComentarioController {
 		comentariosRepository.create(unComentario);
 		return mav;
 	}
-
+	//Bloquea un comentario
 	@RequestMapping(value="/block", method=RequestMethod.GET)
 	public ModelAndView block(@RequestParam("id") int id,@RequestParam("flag") boolean flag,@RequestParam("idComentable") int idComentable){
 		ModelAndView mav = new ModelAndView("redirect:index?id=" + idComentable + "&flag=" + flag);
 		comentariosRepository.block(id);
 		return mav;
 	}
-
+	//Remueve el comentario
 	@RequestMapping(value="/remove", method=RequestMethod.GET)
 	public ModelAndView remove(@RequestParam("id") int id,@RequestParam("flag") boolean flag,@RequestParam("idComentable") int idComentable){
 		ModelAndView mav = new ModelAndView("redirect:index?id=" + idComentable + "&flag=" + flag);
