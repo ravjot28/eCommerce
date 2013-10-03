@@ -24,13 +24,10 @@ public class ComentariosRepository {
 	private EntityManager entityManager;
 	
 	public List<Comentario> findAll(int id){
-	//	TypedQuery<Comentario> q = entityManager.createQuery("select a from Comentario a", Comentario.class);
-		TypedQuery<Comentario> q = entityManager.createQuery("select a from Comentario a where idProducto = :idProducto", Comentario.class)
-				.setParameter(":idProducto", id);
+		TypedQuery<Comentario> q = entityManager.createQuery("select a from Comentario a where idProducto = :id", Comentario.class)
+				.setParameter("id", id);
 		List<Comentario> comentarios = q.getResultList();
 		LOG.info("Se obtuvieron {} comentarios", comentarios.size());
-		
-
 		return comentarios;
 	}
 	public void create(Comentario comentario){
@@ -54,12 +51,6 @@ public class ComentariosRepository {
 		entityManager.flush();
 	}
 	public Comentario save(Comentario unComentario){
-//		comentario.setTexto(comentario.getTexto());	
-//		comentario.setAceptado(comentario.isAceptado());
-//		entityManager.merge(comentario);
-//		System.out.println("entro en el save");
-//		return comentario;
-		
 		Comentario elComentario = get(unComentario.getId());
 		elComentario.setTexto(unComentario.getTexto());
 		elComentario.setAceptado(unComentario.isAceptado());

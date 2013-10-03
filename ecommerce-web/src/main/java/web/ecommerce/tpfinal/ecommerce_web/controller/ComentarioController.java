@@ -20,14 +20,20 @@ public class ComentarioController {
 	private ComentariosRepository comentariosRepository;
 
 	@RequestMapping(value="/index", method=RequestMethod.GET)
-	//public ModelAndView comentario(@RequestParam("id") int id, @RequestParam("nombre") String nombre){
-	public ModelAndView comentario(){	
+	public ModelAndView indexproducto(@RequestParam("id") int id){	
 	ModelAndView mav = new ModelAndView();
-		mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll(33));
-		mav.getModelMap().addAttribute("nombre", "nombre");
-		mav.getModelMap().addAttribute("idComentable", 33);
+		mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll(id));
+		mav.getModelMap().addAttribute("idComentable", id);
 		return mav;
 	}
+	
+//	@RequestMapping(value="/index", method=RequestMethod.GET)
+//	public ModelAndView indexfabricante(@RequestParam("id") int id){	
+//	ModelAndView mav = new ModelAndView();
+//		mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll(id));
+//		mav.getModelMap().addAttribute("idComentable", id);
+//		return mav;
+//	}
 
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public ModelAndView add(@ModelAttribute Comentario unComentario){
