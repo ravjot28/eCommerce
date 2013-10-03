@@ -21,7 +21,7 @@ body {
 h1 {
 	font: bold 230%/100% "Lucida Grande";
 	position: relative;
-	color: #0B0B61;
+	color: #00FF00;
 }
 
 h1 span {
@@ -33,18 +33,22 @@ h1 span {
 }
 
 .button-left {
-	color: #D8D8D8;
-	background-color: #151515;
+	background: #99cede;
+	background: -webkit-gradient(linear, left top, left bottom, from(#080a08),
+		to(#99cede));
+	background: -webkit-linear-gradient(top, #080a08, #99cede);
+	background: -moz-linear-gradient(top, #080a08, #99cede);
+	background: -ms-linear-gradient(top, #080a08, #99cede);
+	background: -o-linear-gradient(top, #080a08, #99cede);
+	padding: 8px 16px;
+	-webkit-border-radius: 11px;
+	-moz-border-radius: 11px;
+	-webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+	-moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+	box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+	text-shadow: rgba(0, 0, 0, .4) 0 1px 0;
+	color: #030303;
 	display: block;
-	font: normal 23px arial, sans-serif;
-	font-style: italic;
-	height: 44px;
-	margin-right: 511px;
-	padding-right: 14px;
-	/* no debe sobrepasa la anchura de la imagen que utilizamos arriba */
-	text-decoration: blink;
-
-	margin: dashed;
 }
 
 .button-left span {
