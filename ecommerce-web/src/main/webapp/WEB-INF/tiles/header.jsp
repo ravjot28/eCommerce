@@ -18,6 +18,9 @@
                 <li><a href="/ecommerce-web/index/buscar">Busqueda Productos</a></li>
                 <li><a href="/ecommerce-web/commerce/carrito">Carrito</a></li>
                 <li><a href="/ecommerce-web/commerce/busqueda2">Busqueda Alternativa</a></li>
+                <li><a href="/ecommerce-web/ordendecompra/user">Usuario Consulta</a></li>
+                <li><a href="/ecommerce-web/ordendecompra/admin">Administrador</a></li>
+                <li><a href="/ecommerce-web/ordendecompra/adminconfirmado">Administrador Consulta</a></li>
                <li>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <a href="/admin/administrador/mainAdmin">Main Admin</a>
