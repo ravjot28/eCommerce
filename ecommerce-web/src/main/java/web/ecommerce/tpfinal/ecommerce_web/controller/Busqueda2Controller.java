@@ -1,4 +1,4 @@
-package web.ecommerce.tpfinal.ecommerce_web.controller;
+/*package web.ecommerce.tpfinal.ecommerce_web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,4 +48,4 @@ public class Busqueda2Controller {
 			mav.getModelMap().addAttribute("productos", busqueda2Repository.getPorRango(min, max));
 			return mav;
 		}
-}
+}*/

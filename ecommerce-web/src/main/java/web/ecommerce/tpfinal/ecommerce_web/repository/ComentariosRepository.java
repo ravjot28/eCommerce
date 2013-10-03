@@ -24,7 +24,7 @@ public class ComentariosRepository {
 	private EntityManager entityManager;
 	
 	public List<Comentario> findAll(int id){
-		TypedQuery<Comentario> q = entityManager.createQuery("select a from Comentario c", Comentario.class);
+		TypedQuery<Comentario> q = entityManager.createQuery("select a from Comentario a", Comentario.class);
 		List<Comentario> comentarios = q.getResultList();
 		LOG.info("Se obtuvieron {} comentarios", comentarios.size());
 
@@ -33,21 +33,27 @@ public class ComentariosRepository {
 	public void create(Comentario comentario){
 		entityManager.persist(comentario);
 	}
-	public void block(int numeroComentario){
-		if(get(numeroComentario).isAceptado()){
-			get(numeroComentario).setAceptado(false);
+	public void block(int id){
+		System.out.println("tengo un; "+get(id).isAceptado());
+		if(get(id).isAceptado()){
+			System.out.println("intento transformar un ; "+get(id).isAceptado());
+			get(id).setAceptado(false);
+			System.out.println("lo deje en; "+get(id).isAceptado());
 		}else{
-			get(numeroComentario).setAceptado(true);
+			System.out.println("intento transformar un ; "+get(id).isAceptado());
+			get(id).setAceptado(false);
+			System.out.println("lo deje en; "+get(id).isAceptado());
 		}
+		save(get(id));
 	}
 	public void delete(int numeroComentario){
 		entityManager.remove(numeroComentario);
 	}
-	public Comentario save(Comentario comentario){
+	public void save(Comentario comentario){
 		comentario.setTexto(comentario.getTexto());		
-		entityManager.persist(comentario);
-		return null;
-
+		//entityManager.persist(comentario);
+		entityManager.merge(comentario);
+		entityManager.getTransaction().commit();
 	}
 	public Comentario get(int numeroComentario){
 		Comentario comentarios = entityManager.find(Comentario.class, numeroComentario);

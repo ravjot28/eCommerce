@@ -19,6 +19,11 @@ public class Comentario {
 	@OneToOne
 	private Usuario usuario;
 	private boolean aceptado = true;
+	
+	public Comentario(){
+		
+		
+	}
 
 	public int getId() {
 		return id;
