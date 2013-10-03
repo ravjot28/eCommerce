@@ -42,11 +42,9 @@
 			</table>
 			</c:forEach>
 		</div>
-		
 		<form action="add" method="post">
 			<input type="hidden" name="flag" value="${flag}">
 			<input type="hidden" name="idComentable" value="${idComentable}">
-			<input type="hidden" name="usuario_email" value="${account.email}">
 			<input type="text" name="texto" >
 			<input type="submit" value="subir" >
 		</form>
