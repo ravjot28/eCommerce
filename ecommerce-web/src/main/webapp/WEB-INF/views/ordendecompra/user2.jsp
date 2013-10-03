@@ -8,7 +8,7 @@
 <br />
 <div>
 	<table class="table table-striped">
-		<tr>
+		<tr align="center">
 			<form action="consultarComprasUser" method="get">
 				<label>Ingrese su mail</label>
 				<input type="email" name="email"/>
