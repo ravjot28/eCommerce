@@ -16,6 +16,7 @@
 			<th>Nombre</th>
 			<th>Fabricante</th>
 			<th>Precio</th>
+			<th>Comentarios</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -27,6 +28,13 @@
 					<td>${producto.fabricante.getNombre()}</td>
 					<td><fmt:formatNumber type="currency"
 							value="${producto.precio}" currencyCode="ARS" /></td>
+					<td>
+					<form action="//localhost:8080/ecommerce-web/comentario/index" method="get">
+						<input type="hidden" name="id" value="${producto.id}"/>
+						<input type="hidden" name="flag" value="true"/>
+						<input type="submit" value="search" />
+					</form>
+					</td>
 				</tr>
 			</c:forEach>
 				
