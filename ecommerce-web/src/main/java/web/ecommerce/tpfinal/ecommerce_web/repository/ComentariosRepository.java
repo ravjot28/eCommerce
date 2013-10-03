@@ -24,10 +24,12 @@ public class ComentariosRepository {
 	private EntityManager entityManager;
 	
 	public List<Comentario> findAll(int id){
-		TypedQuery<Comentario> q = entityManager.createQuery("select a from Comentario a", Comentario.class);
+	//	TypedQuery<Comentario> q = entityManager.createQuery("select a from Comentario a", Comentario.class);
+		TypedQuery<Comentario> q = entityManager.createQuery("select a from Comentario a where idProducto = :idProducto", Comentario.class)
+				.setParameter(":idProducto", id);
 		List<Comentario> comentarios = q.getResultList();
 		LOG.info("Se obtuvieron {} comentarios", comentarios.size());
-		System.out.println("entro en el findall");
+		
 
 		return comentarios;
 	}
