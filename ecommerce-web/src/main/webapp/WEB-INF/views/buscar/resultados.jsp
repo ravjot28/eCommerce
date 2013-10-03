@@ -4,7 +4,7 @@
 
 
 <center>
-	<h1>Inicio</h1>
+	<h1>Resultado de busqueda</h1>
 </center>
 <p></p>
 <div>
