@@ -49,20 +49,22 @@ public class AccountRepository {
 
 		return accounts;
 	}
-	public Account getU(int id){
+	public Account getU(long id){
 		Account account=null;
 		account=entityManager.find(Account.class, id);
 		return account;
 	}
-	public void deleteU(int id){
+	public void deleteU(long id){
 		Account account=getU(id);
 		entityManager.remove(account);
 		entityManager.flush();
 	}
 	public void saveU(Account account){
-		entityManager.refresh(account);
+		entityManager.merge(account);
+		entityManager.flush();
 	}
-
-	
-	
+	public void createU(Account account) {
+		entityManager.persist(account);
+	}
+		
 }

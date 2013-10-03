@@ -56,13 +56,11 @@ public class ProductoRepository {
 		
 		return productos;
 	}
+		
 	/*public void create(Producto producto) {
 		entityManager.persist(producto);
 	}
-	public Producto get(int idProducto){
-		Producto producto = entityManager.find(Producto.class, idProducto);
-		
-		return producto;
+	
 		
 	}*/
 	public ArrayList<Producto> getPorFabricantePrecio(double precio){
@@ -72,6 +70,16 @@ public class ProductoRepository {
 		return productos;
 	}
 	
+	
+	public List<Producto> getAll() {
+		TypedQuery<Producto> q = entityManager.createQuery(
+				"select p from Producto p", Producto.class);
+		List<Producto> productos = q.getResultList();
+		LOG.info("Se obtuvieron {} productos", productos.size());
+
+		return productos;
+	}
+
 	public void createP(Producto producto) {
 		entityManager.persist(producto);
 
@@ -91,20 +99,10 @@ public class ProductoRepository {
 	}
 
 	public void saveP(Producto producto) {
-		entityManager.refresh(producto);
+		entityManager.merge(producto);
+		entityManager.flush();
+		
 	}
-	
-	public List<Producto> getAll() {
-		TypedQuery<Producto> q = entityManager.createQuery(
-				"select p from Producto p", Producto.class);
-		List<Producto> productos = q.getResultList();
-		LOG.info("Se obtuvieron {} productos", productos.size());
-
-		return productos;
-	}
-	
-	
-	
 	
 }
 

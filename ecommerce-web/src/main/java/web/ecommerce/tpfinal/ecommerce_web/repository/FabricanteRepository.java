@@ -1,5 +1,4 @@
 package web.ecommerce.tpfinal.ecommerce_web.repository;
-
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Fabricante;
+import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Producto;
 
 import com.jolbox.bonecp.BoneCPDataSource;
 
@@ -37,6 +37,8 @@ public class FabricanteRepository {
 			
 			return ds;
 		}
+		
+		
 		@PersistenceContext
 		private EntityManager entityManager;
 		
@@ -45,6 +47,16 @@ public class FabricanteRepository {
 			List<Fabricante> fabricantes = fab.getResultList();
 			return fabricantes;
 		}
+		
+		public List<Producto> getAllProdFab(Fabricante fabricante) {
+			TypedQuery<Producto> q = entityManager.createQuery("select p from Producto p where p.fabricante.id = :id", Producto.class)
+					.setParameter("id", fabricante.getId());
+
+			List<Producto> productos = q.getResultList();
+			System.out.println(productos.size());
+			return productos;
+		}
+			
 		
 		public void createF(Fabricante fabricante) {
 			entityManager.persist(fabricante);
@@ -58,10 +70,11 @@ public class FabricanteRepository {
 			Fabricante fabricante=getF(id);
 			entityManager.remove(fabricante);
 			entityManager.flush();
+			
 		}
 		public void saveF(Fabricante fabricante){
-			entityManager.refresh(fabricante);
+			entityManager.merge(fabricante);
+			entityManager.flush();
 		}
-	
 
 }

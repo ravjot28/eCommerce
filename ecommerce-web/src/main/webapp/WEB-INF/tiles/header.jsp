@@ -18,10 +18,10 @@
                 <li><a href="/ecommerce-web/index/buscar">Busqueda Productos</a></li>
                 <li><a href="/ecommerce-web/commerce/carrito">Carrito</a></li>
                 <li><a href="/ecommerce-web/commerce/busqueda2">Busqueda Alternativa</a></li>
-               <li>
-                <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <a href="/admin/administrador/mainAdmin">Main Admin</a>
-                </sec:authorize>
+             	<li>
+	                <sec:authorize access="hasRole('ROLE_ADMIN')">
+	                <a href="/ecommerce-web/administrador/mainAdmin">Main Admin</a>
+	                </sec:authorize>
                 </li>
             </ul>
             <ul class="nav navbar-nav pull-right">

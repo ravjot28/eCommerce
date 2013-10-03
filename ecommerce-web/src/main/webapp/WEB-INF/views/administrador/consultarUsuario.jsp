@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="sec"%>
 
@@ -14,50 +16,45 @@
 	<h2 class="remarco text-muted">Agregar Cuenta Administrador</h2>
 	<div>
 		<form action="createU" method="post">
-			<label for="email" class="text-muted">Email</label> <input id="email"
-				type="text" name="email" /> <label for="password"
-				class="text-muted">Password</label> <input id="password" type="text"
-				name="password" /> <input type="hidden" value="ROLE_ADMIN"
-				name="role" /> <input type="submit" class="btn btn-success" />
+			<label for="email" class="text-muted">Email</label> 
+			<input id="email" type="text" name="email" />
+			 
+			<label for="password" class="text-muted">Password</label>
+			<input id="password" type="text" name="password" />
+			
+			<input type="hidden" value="ROLE_ADMIN" name="role" /> 
+			
+			<input type="submit" class="btn btn-success" />
 		</form>
 	</div>
+	
+	<h2 class="remarco text-muted">Lista de usuarios</h2>
 	<div>
-		<table class="table table-condensed text-muted">
-			<thead class="remarco">
+		<table class="table table-striped">
+			<thead>
 				<tr class="htabla">
-					<th>ID</th>
-					<th>Nombre</th>
+					<th>Email</th>
 					<th>ROL</th>
 					<th>Aplicaciones</th>
 				</tr>
 			</thead>
 			<tbody>
-				<c:forEach items="${accounts}" var="user">
+				<c:forEach  items="${accounts}"  var="account">
 					<tr>
-						<td class="text-muted">${user.id}</td>
-						<td class="text-muted">${user.email}</td>
-						<td class="text-muted">${user.role}</td>
+						<td>${account.email}</td>
+						<td>${account.role}</td>
 						<td>
-							<div class="btn-group">
-								<button type="button" class="btn btn-success dropdown-toggle"
-									data-toggle="dropdown">
-									Action <span class="caret"></span>
-								</button>
-								<ul class="dropdown-menu" role="menu">
-									<li>
-										<form action="delete" method="post">
-											<input type="hidden" value="${user.id}" name="id" /> <input
-												type="hidden" value="account" name="tipo" /> <input
-												type="submit" value=Eliminar class="btn btn-danger btn-xs" />
-										</form>
-									</li>
-									<li><a href="modificar?id=${user.id}"
-										class="btn btn-warning btn-xs">Modificar</a></li>
-								</ul>
-							</div>
+							<form action="delete" method="post">
+								<input type="hidden" value="${account.id}" name="id" /> 
+								<input type="hidden" value="account" name="tipo" /> 
+								<input type="submit" value=Eliminar class="btn btn-danger btn-xs" />
+							</form>
+							<form action="editarU" method="GET">
+								<input type="hidden" name="id" value="${account.id}" />
+								<button class="btn btn-warning btn-xs">Editar</button>
+							</form>
 						</td>
 					</tr>
-
 				</c:forEach>
 			</tbody>
 
