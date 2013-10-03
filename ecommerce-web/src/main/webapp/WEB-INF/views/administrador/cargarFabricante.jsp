@@ -39,6 +39,7 @@
 				<tr class="htabla">
 					<th>Nombre</th>
 					<th>Modificacion</th>
+					<th>Comentar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -61,6 +62,14 @@
 								<button class="btn btn-info btn-xs" >Ver Productos</button>
 							</form>
 						</td>
+						
+																			<td>
+					<form action="//localhost:8080/ecommerce-web/comentario/index" method="get">
+						<input type="hidden" name="id" value="${fabrica.id}"/>
+						<input type="hidden" name="flag" value="false"/>
+						<input type="submit" value="Comentar" />
+					</form>
+					</td>
 					</tr>
 
 				</c:forEach>
