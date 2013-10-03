@@ -32,7 +32,7 @@
 					<form action="//localhost:8080/ecommerce-web/comentario/index" method="get">
 						<input type="hidden" name="id" value="${producto.id}"/>
 						<input type="hidden" name="flag" value="true"/>
-						<input type="submit" value="search" />
+						<input type="submit" value="Comentar" />
 					</form>
 					</td>
 				</tr>
@@ -40,7 +40,7 @@
 				
 		</tbody>
 	</table>
-<a class="button-left" href="/ecommerce-web/buscar/busqueda">Volver a busqueda</a>
+<p align=center> <a class="button-left" href="/ecommerce-web/buscar/busqueda"><b>Volver a busqueda</b></a></p>
 </div>
 
 

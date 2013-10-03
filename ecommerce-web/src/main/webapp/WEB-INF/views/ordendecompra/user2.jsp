@@ -7,8 +7,8 @@
 </div>
 <br />
 <div>
-	<table class="table table-bordered">
-		<tr>
+	<table class="table table-striped">
+		<tr align="center">
 			<form action="consultarComprasUser" method="get">
 				<label>Ingrese su mail</label>
 				<input type="email" name="email"/>
@@ -22,16 +22,16 @@
 	<h1>Usuario - Ver compras</h1>
 </div>
 <div>
-	<table class="table table-bordered">
+	<table class="table table-striped">
 		<tr>
-			<td>Id</td>
-			<td>Usuario</td>
-			<td>Productos</td>
-			<td>Estado</td>	
+			<td align="center">Id</td>
+			<td align="center">Usuario</td>
+			<td align="center">Productos</td>
+			<td align="center">Estado</td>	
 		</tr>
 		<c:forEach items="${compras}" var="compra">	
-			<td>${compra.id}</td>
-			<td>${compra.usuario.perfil}</td>
+			<td align="center">${compra.id}</td>
+			<td align="center">${compra.usuario.perfil}</td>
 			<td>
 			<div align="center">
 				<c:forEach items="${compra.productos}" var="productosComprables">
@@ -39,7 +39,7 @@
 				</c:forEach>
 			</div>
 			</td>
-			<td>${compra.estadoCompra}</td>	
+			<td align="center">${compra.estadoCompra}</td>	
 		</c:forEach>	
 	</table>
 </div>

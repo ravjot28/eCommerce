@@ -9,19 +9,19 @@
 </div>
 <br />
 <div>
-	<table class="table table-bordered">
+	<table class="table table-striped">
 		<tr>
-			<td>ID</td>
-			<td>Usuario</td>
-			<td>Producto</td>
-			<td>Estado</td>
+			<td align="center">ID</td>
+			<td align="center">Usuario</td>
+			<td align="center">Producto</td>
+			<td align="center">Estado</td>
 		</tr>
 		<c:forEach items="${compras}" var="compra">
 			<tr>
-				<td>${compra.id}</td>
-				<td>${compra.usuario.perfil}</td>
+				<td align="center">${compra.id}</td>
+				<td align="center">${compra.usuario.perfil}</td>
 				
-				<td>
+				<td align="center">
 				<c:forEach items="${compra.productos}" var="producto">
 					<div align="center">${producto.producto.nombre}<br/></div>
 				</c:forEach>
