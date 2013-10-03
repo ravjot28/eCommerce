@@ -32,7 +32,7 @@ public class ComentarioController {
 //	ModelAndView mav = new ModelAndView();
 //		mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll(id));
 //		mav.getModelMap().addAttribute("idComentable", id);
-//		return mav;
+//		return mav;aaa
 //	}
 
 	@RequestMapping(value="/add", method=RequestMethod.POST)
