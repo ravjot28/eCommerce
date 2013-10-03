@@ -1,12 +1,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
-<div>
-	<a></a>
-	<a></a>	
+<div align="left">
+	<a href="/ecommerce-web/ordendecompra/adminconfirmado">Ver compras confirmadas</a>	
 </div>
 <div align="center">
-	<h1>Admin</h1>
+	<h1>Admin - Verifique las cuentas por favor</h1>
 </div>
 <br />
 <div>
