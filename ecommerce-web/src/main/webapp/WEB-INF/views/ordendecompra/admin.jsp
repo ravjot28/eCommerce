@@ -1,7 +1,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
-
+<div align="left">
+	
+</div>
 <div align="center">
 	<h1>Admin</h1>
 </div>
@@ -16,13 +18,17 @@
 		</tr>
 		<c:forEach items="${compras}" var="compra">
 			<tr>
-				<td></td>
-				<td>${compra.usuario}</td>
-				<td>${compra.productos}</td>
+				<td>${compra.id}</td>
+				<td>${compra.usuario.perfil}</td>
+				
 				<td>
-					<form action="" method="POST">
-						<input type="hidden" value="${compra.usuario}" name="usuario"/>
-						<input type="hidden" value="${compra.producto}" name="producto"/>
+				<c:forEach items="${compra.productos}" var="producto">
+					<div align="center">${producto.producto.nombre}<br/></div>
+				</c:forEach>
+				</td>
+				<td>
+					<form action="verificarCompras" method="POST">
+						<input type="hidden" value="${compra.id}" name="id"/>	
 						<select name="estadoCompra">
 							<option values="aceptado">Aceptado</option>
 							<option values="rechazado">Rechazado</option>
