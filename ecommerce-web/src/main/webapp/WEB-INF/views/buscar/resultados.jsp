@@ -30,7 +30,7 @@
 							value="${producto.precio}" currencyCode="ARS" /></td>
 				</center></tr>
 			</c:forEach>
-				<center><a class="button-left" href="/ecommerce/buscar/busqueda">Volver a busqueda</a></center>
+				<center><a class="button-left" href="/ecommerce-web/buscar/busqueda">Volver a busqueda</a></center>
 		</tbody>
 	</table>
 
