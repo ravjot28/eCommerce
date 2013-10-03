@@ -50,6 +50,7 @@ h1 span {
 	text-decoration: blink;
 	border-width: 6px;
 	border-style: dashed;
+	border-color: #00FF00;
 }
 
 .button-left span {
