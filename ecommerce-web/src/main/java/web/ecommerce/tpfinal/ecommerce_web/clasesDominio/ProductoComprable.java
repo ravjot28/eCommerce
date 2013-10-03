@@ -17,6 +17,8 @@ public class ProductoComprable {
 	private float precioPagado;
 	private int cantidad;
 
+	public ProductoComprable(){}
+	
 	public ProductoComprable(Producto producto, float precioPagado,
 			int cantidad ) {
 

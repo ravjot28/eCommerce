@@ -8,18 +8,26 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.sql.DataSource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+
+
 import com.jolbox.bonecp.BoneCPDataSource;
 
+import web.ecommerce.tpfinal.ecommerce_web.account.AccountController;
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Producto;
 
 
 @Repository
 @Transactional(readOnly = true)
 public class ProductoRepository {
-		
+	
+	private static final Logger LOG = LoggerFactory
+			.getLogger(AccountController.class);
+	
 	public DataSource setupDataSource() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -64,7 +72,36 @@ public class ProductoRepository {
 		return productos;
 	}
 	
+	public void createP(Producto producto) {
+		entityManager.persist(producto);
+
+	}
+
+	public Producto getP(int id) {
+		Producto producto = null;
+		producto = entityManager.find(Producto.class, id);
+		return producto;
+	}
+
+	public void deleteP(int id) {
+		Producto producto= getP(id);
+		entityManager.remove(producto);
+		entityManager.flush();
 	
+	}
+
+	public void saveP(Producto producto) {
+		entityManager.refresh(producto);
+	}
+	
+	public List<Producto> getAll() {
+		TypedQuery<Producto> q = entityManager.createQuery(
+				"select p from Producto p", Producto.class);
+		List<Producto> productos = q.getResultList();
+		LOG.info("Se obtuvieron {} productos", productos.size());
+
+		return productos;
+	}
 	
 	
 	
