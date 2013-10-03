@@ -5,6 +5,7 @@ import javax.persistence.Id;
 
 @Entity
 public class Usuario {
+	
 	@Id
 	private String email;
 	private String password;

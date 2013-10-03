@@ -2,31 +2,26 @@ body {
 	padding-top: 60px;
 	/* 60px to make the container go all the way to the bottom of the topbar */
 	padding-bottom: 40px;
-	background-color: #08088A;
-	color: #00FF00;
-	bgcolor: #00FF00;
+	background-color: #EFEFFB;
+	color: #0B0B61;
+	bgcolor: #0B0B61;
 	margin: dashed;
 	padding: dashed;
 	font-family: dashed;
-	border: 7px;
-	border-color: red;
-	border-style: dashed;
-	font-size: 15px;
-	list-style-type: circle;
 }
 
 #content h1 {
 	font-style: italic;
 	font-weight: bold;
 	font-size: 2em;
-	font-color: #00FF00;
+	font-color: #0B0B61;
 	font-family: 'Helvetica', 'Verdana', 'Monaco', sans-serif;
 }
 
 h1 {
 	font: bold 230%/100% "Lucida Grande";
 	position: relative;
-	color: #00FF00;
+	color: #0B0B61;
 }
 
 h1 span {
@@ -38,7 +33,7 @@ h1 span {
 }
 
 .button-left {
-	color: #FF0000;
+	color: #D8D8D8;
 	background-color: #151515;
 	display: block;
 	font: normal 23px arial, sans-serif;
@@ -48,9 +43,8 @@ h1 span {
 	padding-right: 14px;
 	/* no debe sobrepasa la anchura de la imagen que utilizamos arriba */
 	text-decoration: blink;
-	border-width: 6px;
-	border-style: dashed;
-	border-color: #00FF00;
+
+	margin: dashed;
 }
 
 .button-left span {
@@ -58,6 +52,9 @@ h1 span {
 	display: block;
 	line-height: 14px;
 	padding: 5px 0 5px 10px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
 }
 
 .form-narrow {

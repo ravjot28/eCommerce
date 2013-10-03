@@ -1,10 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
-<div>
-	<a></a>
-	<a></a>	
-</div>
+
 <div align="center">
 	<h1>Admin</h1>
 </div>
@@ -28,7 +25,7 @@
 				</c:forEach>
 				</td>
 				<td>
-					<form action="verificarCompras" method="POST">
+					<form action="" method="POST">
 						<input type="hidden" value="${compra.id}" name="id"/>	
 						<select name="estadoCompra">
 							<option values="aceptado">Aceptado</option>
