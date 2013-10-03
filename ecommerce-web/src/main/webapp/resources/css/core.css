@@ -34,7 +34,7 @@ h1 span {
 
 .button-left {
 	color: #D8D8D8;
-	background-color: #6E6E6E;
+	background-color: #151515;
 	display: block;
 	font: normal 23px arial, sans-serif;
 	font-style: italic;
@@ -43,9 +43,7 @@ h1 span {
 	padding-right: 14px;
 	/* no debe sobrepasa la anchura de la imagen que utilizamos arriba */
 	text-decoration: blink;
-	border-width: 2px;
-	border-style: dashed;
-	border-color: #1C1C1C;
+
 	margin: dashed;
 }
 
