@@ -30,6 +30,7 @@
 							value="${producto.precio}" currencyCode="ARS" /></td>
 				</tr>
 			</c:forEach>
+		</tbody>
 	</table>
 
 </div>
