@@ -42,7 +42,7 @@ public class AdminController {
 		return mav;
 	}
 	@RequestMapping(value = "/verProd", method = RequestMethod.GET)
-	public ModelAndView verProd(@RequestParam ("id")int id) {
+	public ModelAndView verProd(@RequestParam ("id")Long id) {
 		ModelAndView mav = new ModelAndView();
 		mav.getModelMap().addAttribute("productos", fabricanteRepository.getAllProdFab(fabricanteRepository.getF(id)));
 		mav.getModelMap().addAttribute("fab",fabricanteRepository.getF(id));
@@ -89,7 +89,7 @@ public class AdminController {
 		return mav;
 	}
 	@RequestMapping(value="/createP", method=RequestMethod.POST)
-	public ModelAndView createP(@RequestParam ("nombre")String nombre,@RequestParam ("idFabricante")int idFabricante,@RequestParam ("precio")int precio){
+	public ModelAndView createP(@RequestParam ("nombre")String nombre,@RequestParam ("idFabricante")Long idFabricante,@RequestParam ("precio")int precio){
 		ModelAndView mav = new ModelAndView("redirect:cargarProducto");
 		
 		Fabricante fab = fabricanteRepository.getF(idFabricante);
@@ -113,7 +113,7 @@ public class AdminController {
 		return mav;
 	}
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
-	public ModelAndView delete(@RequestParam ("id") int id, @RequestParam ("tipo") String tipo){
+	public ModelAndView delete(@RequestParam ("id") Long id, @RequestParam ("tipo") String tipo){
 		ModelAndView mav = null;
 
 			if (tipo.equals("producto")){
@@ -135,7 +135,7 @@ public class AdminController {
 		return mav;
 	}
 	@RequestMapping(value="/editarP", method=RequestMethod.GET)
-	public ModelAndView editarP(@RequestParam int id){
+	public ModelAndView editarP(@RequestParam Long id){
 		ModelAndView mav = new ModelAndView();
 
 		Producto producto = productoRepository.getP(id);
@@ -159,7 +159,7 @@ public class AdminController {
 		return mav;
 	}
 	@RequestMapping(value="/editarF", method=RequestMethod.GET)
-	public ModelAndView editarF(@RequestParam int id){
+	public ModelAndView editarF(@RequestParam Long id){
 		ModelAndView mav = new ModelAndView();
 
 		Fabricante fabricante = fabricanteRepository.getF(id);
@@ -181,7 +181,7 @@ public class AdminController {
 		return mav;
 	}
 	@RequestMapping(value="/editarU", method=RequestMethod.GET)
-	public ModelAndView editarU(@RequestParam int id){
+	public ModelAndView editarU(@RequestParam Long id){
 		ModelAndView mav = new ModelAndView();
 
 		Account account = accountRepository.getU(id);

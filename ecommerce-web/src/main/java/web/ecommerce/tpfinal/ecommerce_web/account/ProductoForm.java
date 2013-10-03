@@ -4,7 +4,7 @@ public class ProductoForm {
 	private String nombre;
 	private int idFabricante;
 	private float precio;
-	private int id;
+	private Long id;
 	public String getNombre() {
 		return nombre;
 	}
@@ -18,10 +18,10 @@ public class ProductoForm {
 	public void setPrecio(float precio) {
 		this.precio = precio;
 	}
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public int getIdFabricante() {

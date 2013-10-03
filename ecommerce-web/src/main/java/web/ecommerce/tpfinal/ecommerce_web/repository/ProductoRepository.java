@@ -32,12 +32,7 @@ public class ProductoRepository {
 		return productos;
 	}
 		
-	/*public void create(Producto producto) {
-		entityManager.persist(producto);
-	}
 	
-		
-	}*/
 	public ArrayList<Producto> getPorFabricantePrecio(double precio){
 		TypedQuery<Producto> prod = entityManager.createQuery("SELECT fabricante.nombre, producto.nombre, producto.precio FROM Producto, Fabricante WHERE producto.fabricante_id=fabricante.id INNER JOIN Fabricante ON producto.fabricante_id=fabricante.id ",Producto.class);
 		ArrayList<Producto> productos = (ArrayList<Producto>) prod.getResultList();
@@ -60,13 +55,13 @@ public class ProductoRepository {
 
 	}
 
-	public Producto getP(int id) {
+	public Producto getP(Long id) {
 		Producto producto = null;
 		producto = entityManager.find(Producto.class, id);
 		return producto;
 	}
 
-	public void deleteP(int id) {
+	public void deleteP(Long id) {
 		Producto producto= getP(id);
 		entityManager.remove(producto);
 		entityManager.flush();

@@ -49,12 +49,12 @@ public class AccountRepository {
 
 		return accounts;
 	}
-	public Account getU(long id){
+	public Account getU(Long id){
 		Account account=null;
 		account=entityManager.find(Account.class, id);
 		return account;
 	}
-	public void deleteU(long id){
+	public void deleteU(Long id){
 		Account account=getU(id);
 		entityManager.remove(account);
 		entityManager.flush();
