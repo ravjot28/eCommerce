@@ -14,7 +14,7 @@
 				for="precio_minimo">minimo</label> <input id="precio_minimo"
 				type="text" name="minimo" /> <label for="precio_maximo">maximo</label>
 			<input id="precio_maximo" type="text" name="maximo" />
-			<input type="submit" class="btn btn-success btn-lg"  value="Buscar"/>
+			<input class="button-left" type="submit" class="btn btn-success btn-lg"  value="Buscar"/>
 		</form>
 	</div>
 

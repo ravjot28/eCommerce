@@ -21,6 +21,19 @@ body {
 
 }
 
+.button-left {
+    color:#FF0000;
+     background-color: #151515;
+    display: block;
+ 
+    font: normal 23px arial, sans-serif; font-style: italic;
+    height: 44px;
+    margin-right: 511px;
+    padding-right: 14px; /* no debe sobrepasa la anchura de la imagen que utilizamos arriba */
+    text-decoration: blink;
+}
+ 
+
 h1 {
   font: bold 230%/100% "Lucida Grande";
   position: relative;
