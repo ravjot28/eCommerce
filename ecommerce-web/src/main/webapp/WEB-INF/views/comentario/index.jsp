@@ -16,26 +16,32 @@
 		<c:forEach items="${comentarios}" var="comentario" varStatus="i">
 			<table class="table table-hover">
 				<tbody>
-
-					<tr>
-						<td>${comentario.texto}</td>
-						<td>${comentario.id}</td>
-						<td>${comentario.aceptado}</td>
+						<tr>
+							<td>${comentario.texto}</td>
+							<td>${comentario.id}</td>
+							<td>${comentario.aceptado}</td>
+							<td>aca entro a la tabla y  del foreach</td>
 						<td>
-							<form action="block" method="get">
+							<form action="block" method="get" >
 								<input type="hidden" name="id" value="${comentario.id}">
-								<input type="submit" value="block">
-
+								<input type="submit" value="block" >
 							</form>
-
 						</td>
-					</tr>
+						<td>
+							<form action="remove" method="get" >
+								<input type="hidden" name="id" value="${comentario.id}">
+								<input type="submit" value="remove" >
+							</form>
+						</td>
+						</tr>
 				</tbody>
 			</table>
-			
-		</c:forEach>
-		
+			</c:forEach>
 		</div>
 		
+		<form action="add" method="post">
+			<input type="text" name="texto" >
+			<input type="submit" value="subir" >
+		</form>
 </body>
 </html>

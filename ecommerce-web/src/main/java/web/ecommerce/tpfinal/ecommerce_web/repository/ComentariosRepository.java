@@ -27,40 +27,48 @@ public class ComentariosRepository {
 		TypedQuery<Comentario> q = entityManager.createQuery("select a from Comentario a", Comentario.class);
 		List<Comentario> comentarios = q.getResultList();
 		LOG.info("Se obtuvieron {} comentarios", comentarios.size());
+		System.out.println("entro en el findall");
 
 		return comentarios;
 	}
 	public void create(Comentario comentario){
 		entityManager.persist(comentario);
 	}
-	
-	@Transactional
-	public Comentario save(Comentario comentario){
-		
-		entityManager.flush();
-		System.out.println("aceptado llega aca como: "+comentario.isAceptado());
-		return comentario;
-	}
-	
 	public void block(int id){
-		
-		if(get(id).isAceptado()){
-			
-			get(id).setAceptado(false);
-			
+		Comentario unCometnario = get(id);
+		if(unCometnario.isAceptado()){
+			System.out.println("ENTRO EN EL IF");
+			unCometnario.setAceptado(false);
 		}else{
-			
-			get(id).setAceptado(true);
-			
+			System.out.println("ENTRO EN EL else");
+			unCometnario.setAceptado(true);
 		}
-		save(get(id));
+		save(unCometnario);
+		System.out.println("salio");
 	}
-	public void delete(int numeroComentario){
-		entityManager.remove(numeroComentario);
+	public void delete(int id){
+		System.out.println("entro en el remove");
+		entityManager.remove(get(id));
+		entityManager.flush();
 	}
+	public Comentario save(Comentario unComentario){
+//		comentario.setTexto(comentario.getTexto());	
+//		comentario.setAceptado(comentario.isAceptado());
+//		entityManager.merge(comentario);
+//		System.out.println("entro en el save");
+//		return comentario;
+		
+		Comentario elComentario = get(unComentario.getId());
+		elComentario.setTexto(unComentario.getTexto());
+		elComentario.setAceptado(unComentario.isAceptado());
+		entityManager.flush();
+		System.out.println("entro en el save");
+		return elComentario;
 
-	public Comentario get(int numeroComentario){
-		Comentario comentarios = entityManager.find(Comentario.class, numeroComentario);
+	}
+	public Comentario get(int id){
+		System.out.println("entro en el get");
+		Comentario comentarios = entityManager.find(Comentario.class, id);
 		return comentarios;
 	}
 }
