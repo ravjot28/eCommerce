@@ -3,7 +3,6 @@ package web.ecommerce.tpfinal.ecommerce_web.controller;
 import java.util.ArrayList;
 
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Compra;
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Producto;
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.ProductoComprable;
@@ -22,6 +20,8 @@ public class BusquedaController {
 
 	@Autowired
 	private ProductoRepository ProductoRepository;
+	@Autowired
+	private BusquedaRepository BusquedaRepository;
 	
 	//@Autowired
 	//private CompraRepository compraRepository;
@@ -32,24 +32,19 @@ public class BusquedaController {
 		return mav;
 	}
 	@RequestMapping(value="/resultados", method=RequestMethod.POST)
-	public ModelAndView resultados(@RequestParam double precio){
+	public ModelAndView resultados(@RequestParam String nombre, @RequestParam float minimo, @RequestParam float maximo){
 		ModelAndView mav;
-		//Esto hace la comparacion para la busqueda de productos por marca y precio max/min
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+		if (nombre != null || minimo != 0 || maximo != 0){
 			mav = new ModelAndView();
-			//Fabricante fabricante = BusquedaRepository.getByNombre(nombre);
-			ArrayList<Producto> productos = new ArrayList<Producto>();
-			if (precio <= 0){
-				productos = ProductoRepository.getPorFabricantePrecio(precio);
-			}
-			else
-			{
-				mav = new ModelAndView("redirect:buscar");
-				mav.getModelMap().addAttribute("mensaje", "Ingrese el/los parámetro/s para la búsqueda");
-			}
+			productos.addAll(BusquedaRepository.armarLista(nombre, minimo, maximo));
 			mav.getModelMap().addAttribute("productos", productos);
-				
+		}else{
+			mav = new ModelAndView("redirect:/busqueda");
+			mav.getModelMap().addAttribute("mensaje", "Ingrese el/los parámetro/s para la búsqueda");
+		}
 		return mav;
-	}
+		}
 	/*@RequestMapping(value="/resultados", method=RequestMethod.POST)
 	public ModelAndView resultados(@RequestParam String nombre, @RequestParam int minimo, @RequestParam int maximo){
 		ModelAndView mav;
