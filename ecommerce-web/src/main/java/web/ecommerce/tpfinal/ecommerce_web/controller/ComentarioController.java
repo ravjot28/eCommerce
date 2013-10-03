@@ -20,57 +20,55 @@ public class ComentarioController {
 	private ComentariosRepository comentariosRepository;
 
 	@RequestMapping(value="/index", method=RequestMethod.GET)
-	public ModelAndView indexproducto(@RequestParam("id") int id){	
+	public ModelAndView indexproducto(@RequestParam("id") int id, @RequestParam("flag") boolean flag){	
 	ModelAndView mav = new ModelAndView();
-		mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll(id));
+		mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll(id, flag));
 		mav.getModelMap().addAttribute("idComentable", id);
+		mav.getModelMap().addAttribute("flag", flag);
 		return mav;
 	}
-	
-//	@RequestMapping(value="/index", method=RequestMethod.GET)
-//	public ModelAndView indexfabricante(@RequestParam("id") int id){	
-//	ModelAndView mav = new ModelAndView();
-//		mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll(id));
-//		mav.getModelMap().addAttribute("idComentable", id);
-//		return mav;aaa
-//	}
 
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public ModelAndView add(@ModelAttribute Comentario unComentario){
-		ModelAndView mav = new ModelAndView("redirect:index");
+	public ModelAndView add(@ModelAttribute Comentario unComentario,@RequestParam("flag") boolean flag,@RequestParam("idComentable") int idComentable){
+		ModelAndView mav = new ModelAndView("redirect:index?id=" + idComentable + "&flag=" + flag);
+		if(flag){
+			unComentario.setIdProducto(idComentable);
+		}else {
+			unComentario.setIdFabrica(idComentable);
+		}
 		comentariosRepository.create(unComentario);
 		return mav;
 	}
 
 	@RequestMapping(value="/block", method=RequestMethod.GET)
-	public ModelAndView block(@RequestParam("id") int id){
-		ModelAndView mav = new ModelAndView("redirect:index");
+	public ModelAndView block(@RequestParam("id") int id,@RequestParam("flag") boolean flag,@RequestParam("idComentable") int idComentable){
+		ModelAndView mav = new ModelAndView("redirect:index?id=" + idComentable + "&flag=" + flag);
 		comentariosRepository.block(id);
 		return mav;
 	}
 
 	@RequestMapping(value="/remove", method=RequestMethod.GET)
-	public ModelAndView remove(@RequestParam("id") int id){
-		ModelAndView mav = new ModelAndView("redirect:index");
+	public ModelAndView remove(@RequestParam("id") int id,@RequestParam("flag") boolean flag,@RequestParam("idComentable") int idComentable){
+		ModelAndView mav = new ModelAndView("redirect:index?id=" + idComentable + "&flag=" + flag);
 		comentariosRepository.delete(id);
 		return mav;
 	}
 
-	@RequestMapping(value="/edit", method=RequestMethod.GET)
-	public ModelAndView edit(@RequestParam("numeroComentario") int numeroComentario){
-		ModelAndView mav = new ModelAndView();
-		Comentario elComentario = comentariosRepository.get(numeroComentario);
-		mav.getModelMap().addAttribute("comentario", elComentario);
-		return mav;
-	}
-
-	@RequestMapping(value="/edit", method=RequestMethod.POST)
-	public ModelAndView edit(@ModelAttribute Comentario unComentario){
-		ModelAndView mav = new ModelAndView();
-		comentariosRepository.save(unComentario);
-		
-		return mav;
-	}
+//	@RequestMapping(value="/edit", method=RequestMethod.GET)
+//	public ModelAndView edit(@RequestParam("numeroComentario") int numeroComentario,@RequestParam("flag") boolean flag,@RequestParam("idComentable") int idComentable){
+//		ModelAndView mav = new ModelAndView();
+//		Comentario elComentario = comentariosRepository.get(numeroComentario);
+//		mav.getModelMap().addAttribute("comentario", elComentario);
+//		return mav;
+//	}
+//
+//	@RequestMapping(value="/edit", method=RequestMethod.POST)
+//	public ModelAndView edit(@ModelAttribute Comentario unComentario){
+//		ModelAndView mav = new ModelAndView();
+//		comentariosRepository.save(unComentario);
+//
+//		return mav;
+//	}
 
 }
 

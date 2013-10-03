@@ -23,12 +23,16 @@
 							<td>aca entro a la tabla y  del foreach</td>
 						<td>
 							<form action="block" method="get" >
+								<input type="hidden" name="flag" value="${flag}">
+								<input type="hidden" name="idComentable" value="${idComentable}">
 								<input type="hidden" name="id" value="${comentario.id}">
 								<input type="submit" value="block" >
 							</form>
 						</td>
 						<td>
 							<form action="remove" method="get" >
+								<input type="hidden" name="flag" value="${flag}">
+								<input type="hidden" name="idComentable" value="${idComentable}">
 								<input type="hidden" name="id" value="${comentario.id}">
 								<input type="submit" value="remove" >
 							</form>
@@ -40,6 +44,9 @@
 		</div>
 		
 		<form action="add" method="post">
+			<input type="hidden" name="flag" value="${flag}">
+			<input type="hidden" name="idComentable" value="${idComentable}">
+			<input type="hidden" name="usuario_email" value="${account.email}">
 			<input type="text" name="texto" >
 			<input type="submit" value="subir" >
 		</form>

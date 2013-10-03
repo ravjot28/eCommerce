@@ -5,13 +5,14 @@
 <div class="hero-unit">
     <h2>Busqueda</h2>
         	<div style="text-align: center;" >
-        		<form action="busqueda" method="GET">
+        		<form action="busqueda2" method="GET">
 						<input type="number" name="min" placeholder="Precio Minimo" value=""/>
 						<input type="number" name="max" placeholder="Precio Maximo" value=""/>
 					<select>
 					    <c:forEach items="${fabricantes}" var="fabricante" varStatus="i">
-						     <option> NombreMarca </option>
+							<option> ${fabricante.nombre} </option>
 						</c:forEach>
+					        
 					</select>
 				</form>
 				<br/>
@@ -29,13 +30,14 @@
 						</tr>
 					</thead>
 					<tbody>
-							<c:forEach items="${productos}" var="producto" varStatus="i">
-								<tr>
-									<td>producto.nombre</td>
-									<td>producto.precio</td>
-									<td>producto.fabricante.getNombre()</td>
-								</tr>
-							</c:forEach>
+						<c:forEach items="${productos}" var="producto" varStatus="i">
+							<tr>
+								<td>${producto.nombre}</td>
+								<td>${producto.precio}</td>
+								<td>${producto.fabricante.nombre}</td>
+							</tr>
+						</c:forEach>
+								
 						<tr>
 						</tr>
 					</tbody>
