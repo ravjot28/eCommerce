@@ -31,14 +31,8 @@ public class ComentarioController {
 
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public ModelAndView add(@ModelAttribute Comentario unComentario){
-		ModelAndView mav = null;
-		/** TODO: Esto no tiene mucha pinta
-		ModelAndView mav = new ModelAndView(
-				"redirect:comentario?id={}&nombre={}",
-				Integer.toString(unComentario.getComentable().getID()), 
-				unComentario.getComentable().getNombre());
+		ModelAndView mav = new ModelAndView("redirect:index");
 		comentariosRepository.create(unComentario);
-		**/
 		return mav;
 	}
 
@@ -50,9 +44,9 @@ public class ComentarioController {
 	}
 
 	@RequestMapping(value="/remove", method=RequestMethod.GET)
-	public ModelAndView remove(@RequestParam("numeroComentario") int numeroComentario){
-		ModelAndView mav = new ModelAndView();
-		comentariosRepository.delete(numeroComentario);
+	public ModelAndView remove(@RequestParam("id") int id){
+		ModelAndView mav = new ModelAndView("redirect:index");
+		comentariosRepository.delete(id);
 		return mav;
 	}
 
