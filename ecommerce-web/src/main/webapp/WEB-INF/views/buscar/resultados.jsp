@@ -32,7 +32,7 @@
 				
 		</tbody>
 	</table>
-<a class="button-left" href="/ecommerce-web/buscar/busqueda">Volver a busqueda</a>
+<p align=center> <a class="button-left" href="/ecommerce-web/buscar/busqueda"><b>Volver a busqueda</b></a></p>
 </div>
 
 
