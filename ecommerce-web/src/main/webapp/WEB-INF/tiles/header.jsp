@@ -13,8 +13,8 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/ecommerce-web/commerce/index">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="ecommerce-web/index/buscar">Busqueda Productos</a></li>
-                <li><a href="ecommerce-web/commerce/carrito">Carrito</a></li>
+                <li><a href="/ecommerce-web/index/buscar">Busqueda Productos</a></li>
+                <li><a href="/ecommerce-web/commerce/carrito">Carrito</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <security:authorize access="!isAuthenticated()">
