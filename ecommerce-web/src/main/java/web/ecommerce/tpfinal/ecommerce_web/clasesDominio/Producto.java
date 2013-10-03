@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+
 @Entity
 public class Producto {
 	@Id
@@ -28,6 +29,12 @@ public class Producto {
 		this.fabricante = fabricante;
 		this.precio = precio;
 		this.id = idProducto;
+	}
+	
+	public Producto(String nombre,Fabricante fabricante, float precio){
+		this.nombre=nombre;
+		this.fabricante=fabricante;
+		this.precio=precio;
 	}
 	public String getNombre() {
 		return nombre;

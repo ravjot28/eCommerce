@@ -45,5 +45,23 @@ public class FabricanteRepository {
 			List<Fabricante> fabricantes = fab.getResultList();
 			return fabricantes;
 		}
+		
+		public void createF(Fabricante fabricante) {
+			entityManager.persist(fabricante);
+		}
+		public Fabricante getF(int id){
+			Fabricante fabricante=null;
+			fabricante=entityManager.find(Fabricante.class, id);
+			return fabricante;
+		}
+		public void deleteF(int id){
+			Fabricante fabricante=getF(id);
+			entityManager.remove(fabricante);
+			entityManager.flush();
+		}
+		public void saveF(Fabricante fabricante){
+			entityManager.refresh(fabricante);
+		}
+	
 
 }
