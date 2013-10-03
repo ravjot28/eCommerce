@@ -1,4 +1,4 @@
-/*package web.ecommerce.tpfinal.ecommerce_web.controller;
+package web.ecommerce.tpfinal.ecommerce_web.controller;
 
 import java.util.ArrayList;
 
@@ -80,5 +80,5 @@ public class BusquedaController {
 	public ModelAndView volver(){
 		ModelAndView mav = new ModelAndView("redirect:/commerce/carrito");
 		return mav;
-	}
-}*/
+	}*/
+}
