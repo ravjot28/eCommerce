@@ -10,30 +10,29 @@
 <div>
 	<table class="table table-striped">
 		<thead>
-
-			<center><tr>
-				<th> </th>
-				<th>Id</th>
-				<th>Nombre</th>
-				<th>Fabricante</th>
-				<th>Precio</th>
-			</tr></center>
+			<tr>
+			<th> </th>
+			<th>Id</th>
+			<th>Nombre</th>
+			<th>Fabricante</th>
+			<th>Precio</th>
+			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${productos}" var="producto" varStatus="i">
 				<tr>
-					<center><td>${i.index+1}</td>
+					<td>${i.index+1}</td>
 					<td>${producto.id}</td>
 					<td>${producto.nombre}</td>
 					<td>${producto.fabricante.getNombre()}</td>
 					<td><fmt:formatNumber type="currency"
 							value="${producto.precio}" currencyCode="ARS" /></td>
-				</center></tr>
+				</tr>
 			</c:forEach>
-				<center><a class="button-left" href="/ecommerce-web/buscar/busqueda">Volver a busqueda</a></center>
+				
 		</tbody>
 	</table>
-
+<a class="button-left" href="/ecommerce-web/buscar/busqueda">Volver a busqueda</a>
 </div>
 
 
