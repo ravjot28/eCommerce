@@ -11,6 +11,23 @@ public class Comentario {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	private int idFabrica;
+	private int idProducto;
+	public int getIdFabrica() {
+		return idFabrica;
+	}
+
+	public void setIdFabrica(int idFabrica) {
+		this.idFabrica = idFabrica;
+	}
+
+	public int getIdProducto() {
+		return idProducto;
+	}
+
+	public void setIdProducto(int idProducto) {
+		this.idProducto = idProducto;
+	}
 
 	private String texto;
 	
