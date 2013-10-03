@@ -3,10 +3,10 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 
 <div class="hero-unit">
-	<h2>Buscar</h2>
+	<center><h2>Buscar</h2></center>
 	<div>
-	<h4>${mensaje}</h4>
-
+	<center><h4>${mensaje}</h4></center>
+<center>
 		<form action=resultados method="POST">
 			<label for="fabricante_nombre">Fabricante</label> <input
 				id="fabricante_nombre" type="text" name="nombre" /> <label
@@ -14,9 +14,9 @@
 				for="precio_minimo">minimo</label> <input id="precio_minimo"
 				type="text" name="minimo" /> <label for="precio_maximo">maximo</label>
 			<input id="precio_maximo" type="text" name="maximo" />
-			<input type="submit" class="btn btn-success btn-lg"  value="Buscar"/>
+			<input class="button-left" type="submit" class="btn btn-success btn-lg"  value="Buscar"/>
 		</form>
 	</div>
 
-
+</center>
 </div>

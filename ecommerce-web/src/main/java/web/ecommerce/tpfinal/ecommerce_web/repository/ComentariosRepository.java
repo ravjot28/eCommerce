@@ -22,13 +22,19 @@ public class ComentariosRepository {
 
 	@PersistenceContext
 	private EntityManager entityManager;
-	
-	public List<Comentario> findAll(int id){
-		TypedQuery<Comentario> q = entityManager.createQuery("select a from Comentario a", Comentario.class);
-		List<Comentario> comentarios = q.getResultList();
-		LOG.info("Se obtuvieron {} comentarios", comentarios.size());
-		System.out.println("entro en el findall");
 
+	public List<Comentario> findAll(int id, boolean flag){
+		List<Comentario> comentarios;
+		if(flag){
+			TypedQuery<Comentario> q = entityManager.createQuery("select a from Comentario a where idProducto = :id", Comentario.class)
+					.setParameter("id", id);
+			comentarios = q.getResultList();
+		} else {
+			TypedQuery<Comentario> q = entityManager.createQuery("select a from Comentario a where idFabrica = :id", Comentario.class)
+					.setParameter("id", id);
+			comentarios = q.getResultList();
+		}
+		LOG.info("Se obtuvieron {} comentarios", comentarios.size());
 		return comentarios;
 	}
 	public void create(Comentario comentario){
@@ -52,12 +58,6 @@ public class ComentariosRepository {
 		entityManager.flush();
 	}
 	public Comentario save(Comentario unComentario){
-//		comentario.setTexto(comentario.getTexto());	
-//		comentario.setAceptado(comentario.isAceptado());
-//		entityManager.merge(comentario);
-//		System.out.println("entro en el save");
-//		return comentario;
-		
 		Comentario elComentario = get(unComentario.getId());
 		elComentario.setTexto(unComentario.getTexto());
 		elComentario.setAceptado(unComentario.isAceptado());
