@@ -1,5 +1,7 @@
 package web.ecommerce.tpfinal.ecommerce_web.controller;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import web.ecommerce.tpfinal.ecommerce_web.account.Account;
+import web.ecommerce.tpfinal.ecommerce_web.account.AccountRepository;
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Comentario;
 import web.ecommerce.tpfinal.ecommerce_web.repository.ComentariosRepository;
 
@@ -18,24 +22,33 @@ public class ComentarioController {
 
 	@Autowired
 	private ComentariosRepository comentariosRepository;
+	@Autowired
+	AccountRepository accountRepository;
 
 	@RequestMapping(value="/index", method=RequestMethod.GET)
-	public ModelAndView indexproducto(@RequestParam("id") int id, @RequestParam("flag") boolean flag){	
+	public ModelAndView indexproducto(@RequestParam("id") int id, @RequestParam("flag") boolean flag, Principal principal){	
 	ModelAndView mav = new ModelAndView();
 		mav.getModelMap().addAttribute("comentarios", comentariosRepository.findAll(id, flag));
 		mav.getModelMap().addAttribute("idComentable", id);
 		mav.getModelMap().addAttribute("flag", flag);
+		Account account = accountRepository.findByEmail(principal.getName());
+		mav.getModelMap().addAttribute("account", account); 
+		
 		return mav;
 	}
 
 	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public ModelAndView add(@ModelAttribute Comentario unComentario,@RequestParam("flag") boolean flag,@RequestParam("idComentable") int idComentable){
+	public ModelAndView add(@ModelAttribute Comentario unComentario,@RequestParam("flag") boolean flag,@RequestParam("idComentable") int idComentable, Principal principal){
 		ModelAndView mav = new ModelAndView("redirect:index?id=" + idComentable + "&flag=" + flag);
+		Account a = accountRepository.findByEmail(principal.getName());
+		unComentario.setAccount(a);
+		
 		if(flag){
 			unComentario.setIdProducto(idComentable);
 		}else {
 			unComentario.setIdFabrica(idComentable);
 		}
+		
 		comentariosRepository.create(unComentario);
 		return mav;
 	}

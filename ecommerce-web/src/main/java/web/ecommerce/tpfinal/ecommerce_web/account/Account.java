@@ -22,9 +22,10 @@ public class Account implements java.io.Serializable {
 	@JsonIgnore
 	private String password;
 
+
 	private String role = "ROLE_USER";
 
-    protected Account() {
+	protected Account() {
 
 	}
 	
@@ -60,5 +61,36 @@ public class Account implements java.io.Serializable {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+	
+	public int getPermiso(){
+		int respuesta;
+		if(this.getRole().equals("ROLE_ADMIN")){
+			respuesta = 1;
+		} else {
+			respuesta = 0;
+		}
+		return respuesta;
+	}
+	
+	public int getEqualMail(String nombreDeComentario){
+		int respuesta;
+		if(this.getEmail().equals(nombreDeComentario)){
+			respuesta = 1;
+		} else {
+			respuesta = 0;
+		}
+		return respuesta;
+		
+	}
+	
+	public int resolver(boolean aceptado){
+		int resultado;
+		if((getPermiso() == 1) || aceptado){
+			resultado = 1;
+		} else {
+			resultado = 0;
+		}
+		return resultado;
 	}
 }
