@@ -1,5 +1,7 @@
 package web.ecommerce.tpfinal.ecommerce_web.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,7 +20,6 @@ import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Producto;
 import web.ecommerce.tpfinal.ecommerce_web.repository.FabricanteRepository;
 import web.ecommerce.tpfinal.ecommerce_web.repository.ProductoRepository;
 
-
 @Controller
 @RequestMapping(value = "/administrador/**")
 public class AdminController {
@@ -29,10 +30,22 @@ public class AdminController {
 	private ProductoRepository productoRepository;
 	@Autowired
 	private AccountRepository accountRepository;
-	
+		
 	@RequestMapping(value = "/mainAdmin", method = RequestMethod.GET)
 	public ModelAndView mainAdmin() {
 		ModelAndView mav = new ModelAndView();
+		return mav;
+	}	
+	@RequestMapping(value = "/errorFabricante", method = RequestMethod.GET)
+	public ModelAndView errorFabricante() {
+		ModelAndView mav = new ModelAndView();
+		return mav;
+	}
+	@RequestMapping(value = "/verProd", method = RequestMethod.GET)
+	public ModelAndView verProd(@RequestParam ("id")int id) {
+		ModelAndView mav = new ModelAndView();
+		mav.getModelMap().addAttribute("productos", fabricanteRepository.getAllProdFab(fabricanteRepository.getF(id)));
+		mav.getModelMap().addAttribute("fab",fabricanteRepository.getF(id));
 		return mav;
 	}
 	@RequestMapping(value = "/cargarFabricante", method = RequestMethod.GET)
@@ -55,8 +68,12 @@ public class AdminController {
 	@RequestMapping(value = "/consultarUsuario", method = RequestMethod.GET)
 	public ModelAndView consultarUsuario() {
 		ModelAndView mav = new ModelAndView();
-		//obtener lista de usuarios
-		mav.getModelMap().addAttribute("accounts", accountRepository.getAll());
+		
+		List<Account> lista = accountRepository.getAll();
+		System.out.println(lista);
+		
+		mav.getModelMap().addAttribute("accounts", lista);
+		System.out.println("mostrame esto");
 		return mav;
 	}
 	@RequestMapping(value="/createF", method=RequestMethod.POST)
@@ -86,67 +103,103 @@ public class AdminController {
 
 		return mav;
 	}
+	@RequestMapping(value="/createU", method=RequestMethod.POST)
+	public ModelAndView createU(@RequestParam ("email")String email,@RequestParam ("password")String password,@RequestParam ("role")String role){
+		ModelAndView mav = new ModelAndView("redirect:consultarUsuario");
+		
+		Account account = new Account(email,password,role);
+		
+		accountRepository.save(account);
+		return mav;
+	}
 	@RequestMapping(value="/delete", method=RequestMethod.POST)
 	public ModelAndView delete(@RequestParam ("id") int id, @RequestParam ("tipo") String tipo){
-		ModelAndView mav = new ModelAndView("redirect:cargarProducto");
-			
+		ModelAndView mav = null;
+
 			if (tipo.equals("producto")){
 				System.out.println(" NO SE HACE EL DELETEP");
 				productoRepository.deleteP(id);
 				System.out.println("SE HACE EL DELETEP");
 			}else if (tipo.equals("fabricante")){
-				fabricanteRepository.deleteF(id);
+				try {
+					fabricanteRepository.deleteF(id);
+				} catch (RuntimeException e) {
+					mav = new ModelAndView("redirect:errorFabricante");
+					return mav;
+				}
+				
 			}else if (tipo.equals("account")){
 				accountRepository.deleteU(id);
 			}
+		mav = new ModelAndView("redirect:mainAdmin");
+		return mav;
+	}
+	@RequestMapping(value="/editarP", method=RequestMethod.GET)
+	public ModelAndView editarP(@RequestParam int id){
+		ModelAndView mav = new ModelAndView();
+
+		Producto producto = productoRepository.getP(id);
+		mav.getModelMap().addAttribute("producto", producto);
+		mav.getModelMap().addAttribute("fabricantes", fabricanteRepository.getAllFabricantes());
 
 		return mav;
 	}
-	@RequestMapping(value="/editar", method=RequestMethod.GET)
-	public ModelAndView editar(@RequestParam ("id")int id , @RequestParam ("tipo")String tipo){
-		ModelAndView mav = new ModelAndView();
-		
-		if (tipo.equals("producto")){
-			Producto producto=productoRepository.getP(id);
-			mav.getModelMap().addAttribute("producto", producto);
-		}else if (tipo.equals("fabricante")){
-			Fabricante fabricante= fabricanteRepository.getF(id);
-			mav.getModelMap().addAttribute("fabricante", fabricante);
-		}else if (tipo.equals("usuario")){
-			Account usuario= accountRepository.getU(id);
-			mav.getModelMap().addAttribute("usuario", usuario);
-		}
-		return mav;
-	}
+
 	@RequestMapping(value="/editarP", method=RequestMethod.POST)
 	public ModelAndView editarP(@ModelAttribute ProductoForm productoForm){
-		ModelAndView mav = new ModelAndView("redirect:index");
+		ModelAndView mav = new ModelAndView("redirect:cargarProducto");
+
 		Producto producto = productoRepository.getP(productoForm.getId());
 		producto.setNombre(productoForm.getNombre());
 		producto.setPrecio(productoForm.getPrecio());
-		producto.setFabricante(fabricanteRepository.getF(productoForm.getIdFabricante()));
+		System.out.println("Cambia todo");
 		productoRepository.saveP(producto);
+		System.out.println("EDITO");
+		
 		return mav;
 	}
-	@RequestMapping(value="/editarU", method=RequestMethod.POST)
-	public ModelAndView editarU(@ModelAttribute AccountForm accountForm){
-		ModelAndView mav = new ModelAndView("redirect:index");
-		Account account = accountRepository.getU(accountForm.getId());
-		account.setEmail(accountForm.getEmail());
-		account.setPassword(accountForm.getPassword());
-		account.setRole(accountForm.getRole());
+	@RequestMapping(value="/editarF", method=RequestMethod.GET)
+	public ModelAndView editarF(@RequestParam int id){
+		ModelAndView mav = new ModelAndView();
 
-		
-		accountRepository.saveU(account);
+		Fabricante fabricante = fabricanteRepository.getF(id);
+		mav.getModelMap().addAttribute("fabricante", fabricante);
+
 		return mav;
-	}	
+	}
+
 	@RequestMapping(value="/editarF", method=RequestMethod.POST)
-	public ModelAndView editar(@ModelAttribute FabricanteForm fabricanteForm){
-		ModelAndView mav = new ModelAndView("redirect:index");
+	public ModelAndView editarF(@ModelAttribute FabricanteForm fabricanteForm){
+		ModelAndView mav = new ModelAndView("redirect:cargarFabricante");
+
 		Fabricante fabricante = fabricanteRepository.getF(fabricanteForm.getId());
 		fabricante.setNombre(fabricanteForm.getNombre());
-		
+		System.out.println("Cambia todo");
 		fabricanteRepository.saveF(fabricante);
+		System.out.println("EDITO");
+		
+		return mav;
+	}
+	@RequestMapping(value="/editarU", method=RequestMethod.GET)
+	public ModelAndView editarU(@RequestParam int id){
+		ModelAndView mav = new ModelAndView();
+
+		Account account = accountRepository.getU(id);
+		mav.getModelMap().addAttribute("account", account);
+
+		return mav;
+	}
+
+	@RequestMapping(value="/editarU", method=RequestMethod.POST)
+	public ModelAndView editarU(@ModelAttribute AccountForm accountForm){
+		ModelAndView mav = new ModelAndView("redirect:consultarUsuario");
+
+		Account account = accountRepository.getU(accountForm.getId());
+		account.setEmail(accountForm.getEmail());
+		System.out.println("Cambia todo");
+		accountRepository.saveU(account);
+		System.out.println("EDITO");
+		
 		return mav;
 	}
 }

@@ -43,8 +43,6 @@ pageEncoding="ISO-8859-1"%>
 
 
 
-
-
 	<div>
 		<table class="table table-condensed text-muted">
 			<thead class="remarco">
@@ -62,23 +60,15 @@ pageEncoding="ISO-8859-1"%>
 						<td class="text-muted">${producto.precio}</td>
 						<td class="text-muted">${producto.fabricante.nombre}</td>
 						<td>
-							<div class="btn-group">
-							<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-							    Action <span class="caret"></span>
-							  </button>
-								<ul class="dropdown-menu" role="menu">
-									<li>
-										<form action="delete" method="post">
-											<input type="hidden" value="${producto.id}" name="id" /> 
-											<input type="hidden" value="producto" name="tipo" />
-											<input type="submit" value=Eliminar class="btn btn-danger btn-xs" />
-										</form>
-									</li>
-									<li>
-										<a href="modificar?id=${producto.id}" class="btn btn-warning btn-xs">Modificar</a>
-									</li>
-								</ul>
-							</div>
+							<form action="delete" method="post">
+								<input type="hidden" value="${producto.id}" name="id" /> <input
+									type="hidden" value="producto" name="tipo" /> <input
+									type="submit" value=Eliminar class="btn btn-danger btn-xs" />
+							</form>
+							<form action="editarP" method="GET">
+								<input type="hidden" name="id" value="${producto.id}" />
+								<button class="btn btn-warning btn-xs">Editar</button>
+							</form>
 						</td>
 					</tr>
 

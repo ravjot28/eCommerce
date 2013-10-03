@@ -21,10 +21,10 @@
                 <li><a href="/ecommerce-web/ordendecompra/user">Usuario Consulta</a></li>
                 <li><a href="/ecommerce-web/ordendecompra/admin">Administrador</a></li>
                 <li><a href="/ecommerce-web/ordendecompra/adminconfirmado">Administrador Consulta</a></li>
-               <li>
-                <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <a href="/admin/administrador/mainAdmin">Main Admin</a>
-                </sec:authorize>
+             	<li>
+	                <sec:authorize access="hasRole('ROLE_ADMIN')">
+	                <a href="/ecommerce-web/administrador/mainAdmin">Main Admin</a>
+	                </sec:authorize>
                 </li>
             </ul>
             <ul class="nav navbar-nav pull-right">

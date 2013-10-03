@@ -34,29 +34,44 @@
 	<h4 class="remarco text-muted">Lista de fabricantes</h4>
 	
  <div>
-    	<table class="table table-condensed text-muted" >
-    		<thead class="remarco">
-    			<tr class="htabla">
-    				<th>Nombre</th>
-    				<th>id</th>
-    		
-    			</tr>
-    		</thead>
-    		<tbody>
-    			<c:forEach items="${fabricantes}" var="fabricante">
-    				<tr>
-    					<td class="text-muted">${fabricante.nombre}</td>
-    					<td class="text-muted">${fabricante.id}</td> 				
+		<table class="table table-condensed text-muted">
+			<thead class="remarco">
+				<tr class="htabla">
+					<th>Nombre</th>
+					<th>Modificacion</th>
 				</tr>
-			
-		    	</c:forEach>
-    		</tbody>
-    	
-    	</table>
-    	
-</div>
+			</thead>
+			<tbody>
+				<c:forEach items="${fabricantes}" var="fabricante">
+					<tr>
+						<td class="text-muted">${fabricante.nombre}</td>
+						<td>
+							<form action="delete" method="post">
+								<input type="hidden" value="${fabricante.id}" name="id" /> <input
+									type="hidden" value="fabricante" name="tipo" /> <input
+									type="submit" value=Eliminar class="btn btn-danger btn-xs" />
+							</form>
+						
+							<form action="editarF" method="GET">
+								<input type="hidden" name="id" value="${fabricante.id}" />
+								<button class="btn btn-warning btn-xs" >Editar</button>
+							</form>
+							<form action="verProd" method="GET">
+								<input type="hidden" name="id" value="${fabricante.id}" />
+								<button class="btn btn-info btn-xs" >Ver Productos</button>
+							</form>
+						</td>
+					</tr>
 
+				</c:forEach>
+			</tbody>
+
+		</table>
+
+	</div>
+	
+
+	
 <a href="mainAdmin"><button class="btn btn-success">ATRAS</button></a>
-
 </body>
 </html>
