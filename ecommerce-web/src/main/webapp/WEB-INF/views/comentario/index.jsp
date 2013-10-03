@@ -12,53 +12,51 @@
 </head>
 <body>
 	<h1>TABLA DE COMENTARIOS:</h1>
-		<div>
+		<div class="table-responsive">
 		<c:forEach items="${comentarios}" var="comentario" varStatus="i">
 		<c:if test="${account.resolver(comentario.aceptado) == 1}">
-			<table class="table table-hover">
-				
+			<table class="table table-hover, table table-bordered, table table-striped">
 				<tbody>
-						
 						<tr>
 							<td>${comentario.id}</td>
 							<td>${comentario.account.email}</td>
 							<td>${comentario.texto}</td>
-							<td>${comentario.aceptado}</td>
-							
 						<td>
 							<c:if test="${account.getPermiso() == 1}">
 							<form action="block" method="get" >
 								<input type="hidden" name="flag" value="${flag}">
 								<input type="hidden" name="idComentable" value="${idComentable}">
 								<input type="hidden" name="id" value="${comentario.id}">
-								<input type="submit" value="block" >
+								<input type="submit" class="btn btn-default" value="block" >
 							</form>
 							</c:if>
 						</td>
-							
-						<td>							
-							<c:if test="${account.getEqualMail(comentario.account.email) == 1}">
+						<td>
+								<c:if test="${account.getEqualMail(comentario.account.email) == 1}">
 								<form action="remove" method="get" >
 									<input type="hidden" name="flag" value="${flag}">
 									<input type="hidden" name="idComentable" value="${idComentable}">
 									<input type="hidden" name="id" value="${comentario.id}">
-									<input type="submit" value="remove" >
+									<input type="submit" class="btn btn-default" value="remove" >
 								</form>
 							</c:if>
 						</td>
 						</tr>
 						
 				</tbody>
-				
 			</table>
 			</c:if>
 			</c:forEach>
 		</div>
+		<h3>Mandar un Comentario</h3>
 		<form action="add" method="post">
+			<textarea class="form-control" rows="3" name="texto">
+				
+			</textarea>
 			<input type="hidden" name="flag" value="${flag}">
 			<input type="hidden" name="idComentable" value="${idComentable}">
-			<input type="text" name="texto" >
-			<input type="submit" value="subir" >
+
+			<input type="submit" class="btn btn-success btn-block" value="subir" >
 		</form>
 </body>
 </html>
