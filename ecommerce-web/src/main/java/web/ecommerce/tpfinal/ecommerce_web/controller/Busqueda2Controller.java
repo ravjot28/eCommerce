@@ -11,7 +11,7 @@ import web.ecommerce.tpfinal.ecommerce_web.repository.Busqueda2Repository;
 import web.ecommerce.tpfinal.ecommerce_web.repository.FabricanteRepository;
 import web.ecommerce.tpfinal.ecommerce_web.repository.ProductoRepository;
 
-@Controller
+/*@Controller
 @RequestMapping(value="/buscar/**")
 public class Busqueda2Controller {
 	
