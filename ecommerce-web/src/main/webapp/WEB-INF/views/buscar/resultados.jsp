@@ -11,26 +11,26 @@
 	<table class="table table-striped">
 		<thead>
 
-			<tr>
+			<center><tr>
 				<th> </th>
 				<th>Id</th>
 				<th>Nombre</th>
 				<th>Fabricante</th>
 				<th>Precio</th>
-			</tr>
+			</tr></center>
 		</thead>
 		<tbody>
 			<c:forEach items="${productos}" var="producto" varStatus="i">
 				<tr>
-					<td>${i.index+1}</td>
+					<center><td>${i.index+1}</td>
 					<td>${producto.id}</td>
 					<td>${producto.nombre}</td>
 					<td>${producto.fabricante.getNombre()}</td>
 					<td><fmt:formatNumber type="currency"
 							value="${producto.precio}" currencyCode="ARS" /></td>
-				</tr>
+				</center></tr>
 			</c:forEach>
-				<a class="button-left" href="/ecommerce/buscar/busqueda">Volver a busqueda</a>
+				<center><a class="button-left" href="/ecommerce/buscar/busqueda">Volver a busqueda</a></center>
 		</tbody>
 	</table>
 
