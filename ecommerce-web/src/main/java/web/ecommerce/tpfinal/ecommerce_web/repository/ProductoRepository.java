@@ -1,5 +1,6 @@
 package web.ecommerce.tpfinal.ecommerce_web.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -47,7 +48,7 @@ public class ProductoRepository {
 		
 		return productos;
 	}
-	public void create(Producto producto) {
+	/*public void create(Producto producto) {
 		entityManager.persist(producto);
 	}
 	public Producto get(int idProducto){
@@ -55,7 +56,18 @@ public class ProductoRepository {
 		
 		return producto;
 		
+	}*/
+	public ArrayList<Producto> getPorFabricantePrecio(double precio){
+		TypedQuery<Producto> prod = entityManager.createQuery("SELECT fabricante.nombre, producto.nombre, producto.precio FROM Producto, Fabricante WHERE producto.fabricante_id=fabricante.id INNER JOIN Fabricante ON producto.fabricante_id=fabricante.id ",Producto.class);
+		ArrayList<Producto> productos = (ArrayList<Producto>) prod.getResultList();
+		
+		return productos;
 	}
+	
+	
+	
+	
+	
 	
 }
 

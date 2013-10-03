@@ -7,7 +7,7 @@
 	<div>
 	<h4>${mensaje}</h4>
 
-		<form action=busqueda method="POST">
+		<form action=busqueda method="GET">
 			<label for="fabricante_nombre">Fabricante</label> <input
 				id="fabricante_nombre" type="text" name="nombre" /> <label
 				for="minimo">por Precio :</label> <br> <label

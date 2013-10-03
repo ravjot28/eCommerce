@@ -17,6 +17,10 @@ public class Producto {
 	@OneToOne
 	private Fabricante fabricante;
 	private float precio;
+	
+	public Producto(){
+		
+	}
 
 
 	public Producto(String nombre, Fabricante fabricante, float precio, int idProducto) {

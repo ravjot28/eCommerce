@@ -25,11 +25,13 @@
 					<td>${i.index+1}</td>
 					<td>${producto.id}</td>
 					<td>${producto.nombre}</td>
-					<td>${producto.fabricante}</td>
+					<td>${producto.fabricante.getNombre()}</td>
 					<td><fmt:formatNumber type="currency"
 							value="${producto.precio}" currencyCode="ARS" /></td>
 				</tr>
 			</c:forEach>
+				<a class="button-left" href="/ecommerce/buscar/busqueda">Volver a busqueda</a>
+		</tbody>
 	</table>
 
 </div>

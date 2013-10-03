@@ -13,21 +13,35 @@
 <body>
 	<h1>TABLA DE COMENTARIOS:</h1>
 		<div>
+		<c:forEach items="${comentarios}" var="comentario" varStatus="i">
 			<table class="table table-hover">
 				<tbody>
-					<c:forEach items="${Comentarios}" var="comentario" varStatus="i">
 						<tr>
-							<td>${comentario.nameuser}</td>
-							<td>${comentario.text}</td>
+							<td>${comentario.texto}</td>
+							<td>${comentario.id}</td>
+							<td>${comentario.aceptado}</td>
+							<td>aca entro a la tabla y  del foreach</td>
+						<td>
+							<form action="block" method="get" >
+								<input type="hidden" name="id" value="${comentario.id}">
+								<input type="submit" value="block" >
+							</form>
+						</td>
+						<td>
+							<form action="remove" method="get" >
+								<input type="hidden" name="id" value="${comentario.id}">
+								<input type="submit" value="remove" >
+							</form>
+						</td>
 						</tr>
-						<tfoot>
-							<tr>
-							<th colspan="2"><input	type="submit" name="block" value="block" /></th>
-						</tr>
-							</tfoot>
-					</c:forEach>
 				</tbody>
 			</table>
+			</c:forEach>
 		</div>
+		
+		<form action="add" method="post">
+			<input type="text" name="texto" >
+			<input type="submit" value="subir" >
+		</form>
 </body>
 </html>
