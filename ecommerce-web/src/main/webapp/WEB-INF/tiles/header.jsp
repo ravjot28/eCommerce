@@ -15,6 +15,7 @@
                 <li><a href="#about">About</a></li>
                 <li><a href="/ecommerce-web/index/buscar">Busqueda Productos</a></li>
                 <li><a href="/ecommerce-web/commerce/carrito">Carrito</a></li>
+                <li><a href="/ecommerce-web/commerce/busqueda2">Busqueda Alternativa</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
                 <security:authorize access="!isAuthenticated()">
