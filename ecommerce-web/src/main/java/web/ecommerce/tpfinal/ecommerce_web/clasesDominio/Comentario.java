@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+import web.ecommerce.tpfinal.ecommerce_web.account.Account;
+
 @Entity
 public class Comentario {
 	@Id
@@ -34,7 +36,7 @@ public class Comentario {
 	private transient IComentable comentable;
 	
 	@OneToOne
-	private Usuario usuario;
+	private Account account;
 	private boolean aceptado = true;
 	
 	public Comentario(){
@@ -51,11 +53,11 @@ public class Comentario {
 	}
 
 	public Comentario(String texto, IComentable comentable,
-			Usuario usuario, boolean aceptado) {
+			Account account, boolean aceptado) {
 
 		this.texto = texto;
 		this.comentable = comentable;
-		this.usuario = usuario;
+		this.account = account;
 		this.aceptado = aceptado;
 	}
 
@@ -75,12 +77,12 @@ public class Comentario {
 		this.comentable = comentable;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Account getaccount() {
+		return account;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 	public boolean isAceptado() {
