@@ -16,7 +16,8 @@
 			<th>Nombre</th>
 			<th>Fabricante</th>
 			<th>Precio</th>
-			<th>Comentarios</th>
+			<th>Comentarios Productos</th>
+			<th>Comentarios Fabricantes</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -29,18 +30,27 @@
 					<td><fmt:formatNumber type="currency"
 							value="${producto.precio}" currencyCode="ARS" /></td>
 					<td>
+											
+					<form action="http://localhost:8080/ecommerce-web/comentario/index" method="get">
+						<input type="hidden" name="id" value="${producto.id}"/>
+						<input type="hidden" name="flag" value="true"/>
+						<input class="button-left" type="submit" value="Comentar" />
+					</form>
+					</td>
+					<td>
+				<form action="//localhost:8080/ecommerce-web/comentario/index" method="get">
+						<input type="hidden" name="id" value="${producto.fabricante.id}"/>
+						<input type="hidden" name="flag" value="false"/>
+						<input class="button-left" type="submit" value="Comentar" />
+					</form>
+					</td>
 					<td>
 						<form action="agregarAlCarrito" method="POST">
 							<input type="hidden" value="${producto.id }" name="idProducto"/>
 							<input type="submit" value="Agregar al Carrito" name="agregarCarrito"/>
 						</form>
 					</td>
-					<form action="//localhost:8080/ecommerce-web/comentario/index" method="get">
-						<input type="hidden" name="id" value="${producto.id}"/>
-						<input type="hidden" name="flag" value="true"/>
-						<input class="button-left" type="submit" value="Comentar" />
-					</form>
-					</td>
+
 				</tr>
 			</c:forEach>
 				
