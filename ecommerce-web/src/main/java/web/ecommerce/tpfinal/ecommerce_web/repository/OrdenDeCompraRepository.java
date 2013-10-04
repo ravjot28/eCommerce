@@ -2,17 +2,20 @@
 package web.ecommerce.tpfinal.ecommerce_web.repository;
 
 //imports
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Compra;
+import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.ProductoComprable;
 
 /*Clase Repository*/
 @Repository
@@ -29,9 +32,10 @@ public class OrdenDeCompraRepository {
 	 * Esta consulta carga un objeto Compra a la tabla Compra (Controller - crearChanguito)
 	 **************************************************************************************************************/
 	//Carga los changuitos(objeto compra) a la base de datos a la tabla compra.
-	public void cargarChanguitoDB(Compra compra){
+	public void cargarChanguitoDB(Compra compra, ArrayList<ProductoComprable> carrito){
 		entityManager.persist(compra);
-		System.out.println("compra account: " + compra.getAccount().getEmail());
+		carrito.clear();
+		System.out.println("entro!");
 	}
 
 	

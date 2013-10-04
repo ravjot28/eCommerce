@@ -138,7 +138,7 @@ public class CompraController {
 				}else i++;
 			} 
 			Compra compra = new Compra(account, carrito);
-			ordenDeCompraRepository.cargarChanguitoDB(compra);//llama a ordenDeCompraRepository.cargarChanguitoDB() para cargar un objeto
+			ordenDeCompraRepository.cargarChanguitoDB(compra, carrito);//llama a ordenDeCompraRepository.cargarChanguitoDB() para cargar un objeto
 			return mav;
 		}
 }

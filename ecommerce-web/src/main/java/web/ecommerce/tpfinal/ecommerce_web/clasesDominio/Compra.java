@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 import web.ecommerce.tpfinal.ecommerce_web.account.Account;
 
 @Entity
-public class Compra{
+public class Compra{ //extends IComentable ??
 
 	private boolean estado = false;
 	
