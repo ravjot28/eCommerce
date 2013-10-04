@@ -41,13 +41,13 @@
 				<form action="//localhost:8080/ecommerce-web/comentario/index" method="get">
 						<input type="hidden" name="id" value="${producto.fabricante.id}"/>
 						<input type="hidden" name="flag" value="false"/>
-						<input class="button-left" type="submit" value="Comentar" />
+						<input class="button-small" type="submit" value="Comentar" />
 					</form>
 					</td>
 					<td>
 						<form action="agregarAlCarrito" method="POST">
 							<input type="hidden" value="${producto.id }" name="idProducto"/>
-							<input type="submit" value="Agregar al Carrito" name="agregarCarrito"/>
+							<input type="submit" value="Agregar al Carrito" class="button-small" name="agregarCarrito"/>
 						</form>
 					</td>
 
