@@ -35,14 +35,9 @@ public class BusquedaController {
 	public ModelAndView resultados(@RequestParam String nombre, @RequestParam float minimo, @RequestParam float maximo){
 		ModelAndView mav;
 		ArrayList<Producto> productos = new ArrayList<Producto>();
-		if (nombre != null || minimo != 0 || maximo != 0){
 			mav = new ModelAndView();
 			productos.addAll(BusquedaRepository.armarLista(nombre, minimo, maximo));
 			mav.getModelMap().addAttribute("productos", productos);
-		}else{
-			mav = new ModelAndView("redirect:/busqueda");
-			mav.getModelMap().addAttribute("mensaje", "Ingrese el/los parámetro/s para la búsqueda");
-		}
 		return mav;
 		}
 	/*@RequestMapping(value="/resultados", method=RequestMethod.POST)
