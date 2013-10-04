@@ -10,7 +10,6 @@ import javax.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Fabricante;
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Producto;
 
 @Repository

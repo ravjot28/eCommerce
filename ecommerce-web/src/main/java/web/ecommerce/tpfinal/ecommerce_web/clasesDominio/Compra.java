@@ -1,5 +1,6 @@
 package web.ecommerce.tpfinal.ecommerce_web.clasesDominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -9,40 +10,37 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import web.ecommerce.tpfinal.ecommerce_web.account.Account;
+
 @Entity
-public class Compra {
+public class Compra{ //extends IComentable ??
 
 	private boolean estado = false;
 	
-	//atributos
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
 	@OneToOne
-	private Usuario usuario;
+	private Account account;
 	
 	@OneToMany
 	private List<ProductoComprable> productos;
 	
 	private String estadoCompra;
 	
-	
-	//metodos
-	public Compra(){}
-	
-	public Compra(Usuario usuario, List<ProductoComprable> productos, boolean estado) {
+	public Compra(Account account, ArrayList<ProductoComprable> carrito) {
 		this.estado = true;
-		this.usuario = usuario;
-		this.productos = productos;
+		this.account = account;
+		this.productos = carrito;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Account getAccount() {
+		return account;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 		public void setProductos(List<ProductoComprable> productos) {

@@ -28,8 +28,6 @@
 							<th>Producto</th>
 							<th>Precio</th>
 							<th>Fabricante</th>
-							<th>Comentarios Productos</th>
-							<th>Comentarios Fabricantes</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -38,21 +36,6 @@
 								<td>${producto.nombre}</td>
 								<td>${producto.precio}</td>
 								<td>${producto.fabricante.nombre}</td>
-								<td>
-					<form action="//localhost:8080/ecommerce-web/comentario/index" method="get">
-						<input type="hidden" name="id" value="${producto.id}"/>
-						<input type="hidden" name="flag" value="true"/>
-						<input type="submit" value="Comentar" />
-					</form>
-					</td>
-					
-					<td>
-					<form action="//localhost:8080/ecommerce-web/comentario/index" method="get">
-						<input type="hidden" name="id" value="${producto.fabricante.id}"/>
-						<input type="hidden" name="flag" value="false"/>
-						<input type="submit" value="Comentar" />
-					</form>
-					</td>
 							</tr>
 						</c:forEach>
 								

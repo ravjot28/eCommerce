@@ -48,12 +48,12 @@ public class FabricanteRepository {
 		public void createF(Fabricante fabricante) {
 			entityManager.persist(fabricante);
 		}
-		public Fabricante getF(int id){
+		public Fabricante getF(Long id){
 			Fabricante fabricante=null;
 			fabricante=entityManager.find(Fabricante.class, id);
 			return fabricante;
 		}
-		public void deleteF(int id){
+		public void deleteF(Long id){
 			Fabricante fabricante=getF(id);
 			entityManager.remove(fabricante);
 			entityManager.flush();

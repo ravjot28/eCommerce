@@ -1,14 +1,14 @@
 package web.ecommerce.tpfinal.ecommerce_web.account;
 
 public class AccountForm {
-	private int id;
+	private Long id;
 	private String password;
 	private String email;
 	private String role = "ROLE_USER";
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getPassword() {

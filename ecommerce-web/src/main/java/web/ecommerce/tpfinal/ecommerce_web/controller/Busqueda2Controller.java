@@ -31,24 +31,21 @@ public class Busqueda2Controller {
 		@RequestMapping(value="/busqueda2", method=RequestMethod.GET)
 		public ModelAndView busqueda2(){ //todosLosPoductos
 			ModelAndView mav = new ModelAndView();
-			mav.getModelMap().addAttribute("productos", productoRepository.findAll());
-			//mav.getModelMap().addAttribute("fabricantes", fabricanteRepository.getAllFabricantes());
+			List<Producto> productos = productoRepository.findAll();
+			mav.getModelMap().addAttribute("productos", productos);
+			mav.getModelMap().addAttribute("fabricantes", fabricanteRepository.getAllFabricantes());
 			
 			return mav;
 		}
 		
-		/*@RequestMapping(value="/busqueda2",method=RequestMethod.GET)//busquedaXfabricante
-		public ModelAndView busqueda2(@RequestParam int id){
-			ModelAndView mav = new ModelAndView();
-			
-			mav.getModelMap().addAttribute("productos", busqueda2Repository.getPorFabricante(id));
-			return mav;
-		}*/
 		
-		/*@RequestMapping(value="/busqueda2",method=RequestMethod.GET)//busquedaPorNombre
-		public ModelAndView busqueda3(@RequestParam int min,@RequestParam int max){
+		@RequestMapping(value="resultado2", method=RequestMethod.POST)//busqueda xPyN
+		public ModelAndView resultado2(@RequestParam float min,@RequestParam float max,@RequestParam long id){
 			ModelAndView mav = new ModelAndView();
-			mav.getModelMap().addAttribute("productos", busqueda2Repository.getPorRango(min, max));
+			mav.getModelMap().addAttribute("fabricantes", fabricanteRepository.getAllFabricantes());
+			mav.getModelMap().addAttribute("productos",
+				busqueda2Repository.getFiltroCompleto(min, max, id));
+			
 			return mav;
-		}*/
+		}
 }

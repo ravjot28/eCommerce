@@ -34,8 +34,8 @@ public class UserAdminController {
 	 **************************************************************************************************************************************/
 	
 	/*Este metodo permite ser cargado por un jsp para cargar(meter) en la base de datos "Compra" los datos
-	 * de un objeto*/
-	@RequestMapping(value="crearChanguito"/*accion*/, method=RequestMethod.POST)
+	 * de un objeto
+	@RequestMapping(value="crearChanguito"accion, method=RequestMethod.POST)
 	public ModelAndView crearChanguito(@ModelAttribute Compra compra){
 		ModelAndView mav = new ModelAndView();
 		

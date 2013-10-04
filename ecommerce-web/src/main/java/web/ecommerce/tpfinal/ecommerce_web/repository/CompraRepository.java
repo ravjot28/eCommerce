@@ -1,4 +1,4 @@
-/*package web.ecommerce.tpfinal.ecommerce_web.repository;
+package web.ecommerce.tpfinal.ecommerce_web.repository;
 
 import java.util.List;
 
@@ -6,14 +6,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Compra;
-import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Producto;
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.ProductoComprable;
-
 
 @Repository
 @Transactional(readOnly = true)
@@ -21,37 +18,22 @@ public class CompraRepository {
 	
 	@PersistenceContext
 	private EntityManager entityManager;
+
 	
-	@Autowired
-	private ProductoRepository productosRepository;
-	
-	@Autowired
-	private CompraRepository compraRepository;
-	
-	@Autowired
-	private ProductoComprableRepository productosComprablesReporsitory;
-	
-	public List<ProductoComprable> findAll() {
-		TypedQuery<ProductoComprable> productoComprable = entityManager.createQuery("SELECT a from ProductoComprable a", ProductoComprable.class);
-		List<ProductoComprable> productos = productoComprable.getResultList();
-		return productos;
+	public List<Compra> findAll() {
+		TypedQuery<Compra> compra = entityManager.createQuery("SELECT a from Compra a", Compra.class);
+		List<Compra> compras = compra.getResultList();
+		return compras;
 	}
 	
 	public void create(Compra compra) {
 		entityManager.persist(compra);
 	}
 	
-	public ProductoComprable get(int id, int cantidad){
-		//Producto producto, float precioPagado, int cantidad
-		Producto producto = productosRepository.get(id);
-		ProductoComprable productoComprable = new ProductoComprable(producto, producto.getPrecio(), cantidad);
-		return productoComprable;
-	}
-	
-	public int getIndex(ProductoComprable producto){
+	public int getIndex(ProductoComprable producto, List<ProductoComprable> lista){
 		int index = -1;
-		int idProducto = producto.getProducto().getId();
-		for(ProductoComprable item : compraRepository.findAll()){
+		long idProducto = producto.getProducto().getId();
+		for(ProductoComprable item : lista){
 			if(item.getProducto().getId() != idProducto){
 				index++;
 			}
@@ -66,9 +48,25 @@ public class CompraRepository {
 		return estado;
 	}
 	
-	public void agregarALista(ProductoComprable producto){
-		List<ProductoComprable> lista = compraRepository.findAll();
-		lista.add(producto);
+	public void agregarALista(ProductoComprable producto, Compra compra){
+		compra.getProductos().add(producto);
 	}
 	
-}*/
+	public Compra getCompra(long id){
+		Compra compra = entityManager.find(Compra.class, id);
+		return compra;
+	}
+	
+	public long buscarIdCompraDeCuenta(String email, List<Compra> lista){
+		long idCompra = -1;
+		for(Compra item : lista){
+			if(item.getAccount().getEmail().equals(email)){
+				if(item.isEstado() == true){
+					idCompra = item.getId();
+				}
+			}
+		}
+		return idCompra;
+	}
+
+}
