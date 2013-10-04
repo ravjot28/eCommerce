@@ -1,55 +1,61 @@
 package web.ecommerce.tpfinal.ecommerce_web.controller;
 
+import java.security.Principal;
+
 import java.util.ArrayList;
 
-
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Compra;
+import web.ecommerce.tpfinal.ecommerce_web.account.AccountRepository;
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.Producto;
 import web.ecommerce.tpfinal.ecommerce_web.clasesDominio.ProductoComprable;
 import web.ecommerce.tpfinal.ecommerce_web.repository.*;
+
 @Controller
 @RequestMapping(value="/buscar/**")
+@SessionAttributes("carrito")
 public class BusquedaController {
 
 	@Autowired
-	private ProductoRepository ProductoRepository;
-	
-	//@Autowired
-	//private CompraRepository compraRepository;
+	private ProductoRepository productoRepository;
+	@Autowired
+	private BusquedaRepository busquedaRepository;	
+	@Autowired
+	private CompraRepository compraRepository;
+	@Autowired
+	private AccountRepository accountRepository;
+	@Autowired
+	private ProductoComprableRepository productoComprableRepository;
 	
 	@RequestMapping(value="/busqueda", method=RequestMethod.GET)
-	public ModelAndView busqueda(){
+	public ModelAndView busqueda(String mensaje2){
 		ModelAndView mav = new ModelAndView();
+		mav.getModelMap().addAttribute("mensaje2", mensaje2);
 		return mav;
 	}
 	@RequestMapping(value="/resultados", method=RequestMethod.POST)
-	public ModelAndView resultados(@RequestParam double precio){
+	public ModelAndView resultados(@RequestParam String nombre, @RequestParam float minimo, @RequestParam float maximo){
 		ModelAndView mav;
-		//Esto hace la comparacion para la busqueda de productos por marca y precio max/min
+		
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+		if (nombre != null || minimo != 0 || maximo != 0){
 			mav = new ModelAndView();
-			//Fabricante fabricante = BusquedaRepository.getByNombre(nombre);
-			ArrayList<Producto> productos = new ArrayList<Producto>();
-			if (precio <= 0){
-				productos = ProductoRepository.getPorFabricantePrecio(precio);
-			}
-			else
-			{
-				mav = new ModelAndView("redirect:buscar");
-				mav.getModelMap().addAttribute("mensaje", "Ingrese el/los parámetro/s para la búsqueda");
-			}
+			productos.addAll(busquedaRepository.armarLista(nombre, minimo, maximo));
 			mav.getModelMap().addAttribute("productos", productos);
-				
+		}else{
+			mav = new ModelAndView("redirect:/busqueda");
+			mav.getModelMap().addAttribute("mensaje", "Ingrese el/los parámetro/s para la búsqueda");
+		}
 		return mav;
-	}
+		}
 	/*@RequestMapping(value="/resultados", method=RequestMethod.POST)
 	public ModelAndView resultados(@RequestParam String nombre, @RequestParam int minimo, @RequestParam int maximo){
 		ModelAndView mav;
@@ -80,26 +86,18 @@ public class BusquedaController {
 	}*/
 			
 	
-	//Avisar que se tiene que pasar a false el estado de Compra
-	/*@RequestMapping(value="/agregarAlCarrito", method=RequestMethod.POST)
-	public ModelAndView agregarAlCarrito(@RequestParam int idProducto){
-		Compra compra = null;
-		ModelAndView mav = new ModelAndView();
-		Producto producto = ProductoRepository.get(idProducto);
-		ProductoComprable productoComprable = new ProductoComprable(producto, producto.getPrecio(), 1);
-		if(compraRepository.getEstado() == false){
-			compraRepository.create(compra);
-			compraRepository.agregarALista(productoComprable);
-		}else{
-			compraRepository.agregarALista(productoComprable);
-		}
+	@RequestMapping(value="/agregarAlCarrito", method=RequestMethod.POST)
+	public ModelAndView agregarAlCarrito(@RequestParam long idProducto, Principal principal, 
+			HttpServletRequest request){
+		ModelAndView mav = new ModelAndView("redirect:busqueda");
+		Producto producto = productoRepository.getP(idProducto);
+		ProductoComprable productoComprable= productoComprableRepository.generar(producto, 1);
+		productoComprableRepository.create(productoComprable);
+		@SuppressWarnings("unchecked")
+		ArrayList<ProductoComprable> carrito = (ArrayList<ProductoComprable>) request.getSession().getAttribute("carrito");
+		if(carrito == null) carrito = new ArrayList<ProductoComprable>();
+		carrito.add(productoComprable);
+		request.getSession().setAttribute("carrito", carrito);
 		return mav;
-	}*/
-	
-	
-/*	@RequestMapping(value="/volver", method=RequestMethod.POST)
-	public ModelAndView volver(){
-		ModelAndView mav = new ModelAndView("redirect:/commerce/carrito");
-		return mav;
-	}*/
+	}
 }

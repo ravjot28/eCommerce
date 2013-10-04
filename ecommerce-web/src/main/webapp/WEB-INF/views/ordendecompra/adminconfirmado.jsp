@@ -2,10 +2,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 <div align="left">
-	<a href="/ecommerce-web/ordendecompra/adminconfirmado">Ver compras confirmadas</a>	
+	<a href="/ecommerce-web/ordendecompra/admin">Confirmar compras</a>	
 </div>
 <div align="center">
-	<h1>Admin - Verifique las cuentas por favor</h1>
+	<h1>Admin - Estas son las cuentas ya verificadas</h1>
 </div>
 <br />
 <div>
@@ -21,21 +21,12 @@
 				<td align="center">${compra.id}</td>
 				<td align="center">${compra.usuario.perfil}</td>
 				
-				<td align="center">
-				<c:forEach items="${compra.productos}" var="producto">
-					<div align="center">${producto.producto.nombre}<br/></div>
+				<td>
+				<c:forEach items="${compra.productos}" var="productoComprable">
+					<div align="center">${productoComprable.producto.nombre}<br/></div>
 				</c:forEach>
 				</td>
-				<td>
-					<form action="verificarCompras" method="POST">
-						<input type="hidden" value="${compra.id}" name="id"/>	
-						<select name="estadoCompra">
-							<option values="aceptado">Aceptado</option>
-							<option values="rechazado">Rechazado</option>
-						</select>
-						<button type="submit" class="btn btn-primary">Aceptar</button>
-					</form>
-				</td>
+				<td align="center">${compra.estadoCompra}</td>
 			</tr>
 		</c:forEach>
 	</table>

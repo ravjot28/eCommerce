@@ -6,11 +6,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
+
 @Entity
 public class Producto {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	
 	private String nombre;
 	
@@ -23,11 +24,17 @@ public class Producto {
 	}
 
 
-	public Producto(String nombre, Fabricante fabricante, float precio, int idProducto) {
+	public Producto(String nombre, Fabricante fabricante, float precio, Long idProducto) {
 		this.nombre = nombre;
 		this.fabricante = fabricante;
 		this.precio = precio;
 		this.id = idProducto;
+	}
+	
+	public Producto(String nombre,Fabricante fabricante, float precio){
+		this.nombre=nombre;
+		this.fabricante=fabricante;
+		this.precio=precio;
 	}
 	public String getNombre() {
 		return nombre;
@@ -47,10 +54,10 @@ public class Producto {
 	public void setPrecio(float precio) {
 		this.precio = precio;
 	}
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int idProducto) {
+	public void setId(Long idProducto) {
 		this.id = idProducto;
 	}
 

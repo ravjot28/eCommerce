@@ -27,6 +27,7 @@
 <body>
 	
 	<tiles:insertAttribute name="header"  defaultValue="" />
+	<br/>
 	<!-- Page content -->
 	<div class="container">
         <% /* Show a message. See support.web package */ %>
