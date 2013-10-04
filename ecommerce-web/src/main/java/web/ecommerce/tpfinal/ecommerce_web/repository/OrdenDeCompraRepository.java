@@ -31,6 +31,7 @@ public class OrdenDeCompraRepository {
 	//Carga los changuitos(objeto compra) a la base de datos a la tabla compra.
 	public void cargarChanguitoDB(Compra compra){
 		entityManager.persist(compra);
+		System.out.println("compra account: " + compra.getAccount().getEmail());
 	}
 
 	
@@ -90,7 +91,7 @@ public class OrdenDeCompraRepository {
 		System.out.println(email);
 		List<Compra> compra = q.getResultList();
 		for(Compra compras : compra){
-			Hibernate.initialize(compras.getUsuario());
+			Hibernate.initialize(compras.getAccount());
 		}
 		for(Compra compras : compra){
 			Hibernate.initialize(compras.getProductos());

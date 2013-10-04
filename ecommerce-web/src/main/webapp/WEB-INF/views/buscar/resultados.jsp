@@ -29,6 +29,12 @@
 					<td><fmt:formatNumber type="currency"
 							value="${producto.precio}" currencyCode="ARS" /></td>
 					<td>
+					<td>
+						<form action="agregarAlCarrito" method="POST">
+							<input type="hidden" value="${producto.id }" name="idProducto"/>
+							<input type="submit" value="Agregar al Carrito" name="agregarCarrito"/>
+						</form>
+					</td>
 					<form action="//localhost:8080/ecommerce-web/comentario/index" method="get">
 						<input type="hidden" name="id" value="${producto.id}"/>
 						<input type="hidden" name="flag" value="true"/>
@@ -40,7 +46,7 @@
 				
 		</tbody>
 	</table>
-<p align=center> <a class="button-left" href="/ecommerce-web/buscar/busqueda"><b>Volver a busqueda</b></a></p>
+<p align=center> <a class="button-left" href="/ecommerce-web/buscar/busqueda"><b>Volver a Búsqueda</b></a></p>
 </div>
 
 

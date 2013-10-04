@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="s"%>
 
-<form>
+<div align="center">
     <h1>BIENVENIDO AL SISTEMA ONLINE DE COMPRA </h1>
     <br>
     <h2>Presione Continuar para acceder</h2>
@@ -10,5 +10,5 @@
     
     
   
-</form>
+</div>
 
