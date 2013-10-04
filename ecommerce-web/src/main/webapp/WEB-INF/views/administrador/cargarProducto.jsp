@@ -69,6 +69,11 @@ pageEncoding="ISO-8859-1"%>
 								<input type="hidden" name="id" value="${producto.id}" />
 								<button class="btn btn-warning btn-xs">Editar</button>
 							</form>
+							<form action="//localhost:8080/ecommerce-web/comentario/index" method="GET">
+								<input type="hidden" name="id" value="${producto.id}" />
+								<input type="hidden" name="flag" value="false"/>
+								<button class="btn btn-default btn-xs" >Comentar</button>
+							</form>
 						</td>
 					</tr>
 

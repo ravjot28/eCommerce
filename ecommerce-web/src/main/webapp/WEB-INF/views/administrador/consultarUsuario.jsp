@@ -53,6 +53,11 @@
 								<input type="hidden" name="id" value="${account.id}" />
 								<button class="btn btn-warning btn-xs">Editar</button>
 							</form>
+							<form action="//localhost:8080/ecommerce-web/comentario/index" method="GET">
+								<input type="hidden" name="id" value="${account.id}" />
+								<input type="hidden" name="flag" value="false"/>
+								<button class="btn btn-default btn-xs" >Comentarios</button>
+							</form>
 						</td>
 					</tr>
 				</c:forEach>
