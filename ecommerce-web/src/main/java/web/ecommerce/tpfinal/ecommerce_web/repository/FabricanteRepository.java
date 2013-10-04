@@ -41,7 +41,7 @@ public class FabricanteRepository {
 		private EntityManager entityManager;
 		
 		public List<Fabricante> getAllFabricantes(){
-			TypedQuery<Fabricante> fab = entityManager.createQuery("SELECT f FROM Fabricante",Fabricante.class);
+			TypedQuery<Fabricante> fab = entityManager.createQuery("SELECT f FROM Fabricante f",Fabricante.class);
 			List<Fabricante> fabricantes = fab.getResultList();
 			return fabricantes;
 		}
